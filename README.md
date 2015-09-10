@@ -1,2 +1,2 @@
-# MDDN243Pitch
-Game Pitch for MDDN 243
+# WeAreAllOne
+Game for MDDN 243
