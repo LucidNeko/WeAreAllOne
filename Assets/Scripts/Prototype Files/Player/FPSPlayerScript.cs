@@ -24,7 +24,7 @@ public class FPSPlayerScript : MonoBehaviour {
 	void FixedUpdate () {
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
-		bool jump = Input.GetButton ("Jump");
+		bool jump = Input.GetButtonDown ("Jump");
 
 		Vector3 forward = Vector3.Scale(m_Camera.forward, XZ_PLANE).normalized;
 		Vector3 move = v * forward + h * m_Camera.right;

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+	public int m_MaxAirManeuvers = 2;
 
 	public float m_Speed = 6f;
 	
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
 	private Animator m_Animator;
 
 	private bool m_Falling = false;
+
+	private int m_AirManeuversRemaining;
 
 	private Color m_Color = Color.white;
 	public Color CharacterColor {
@@ -49,6 +52,8 @@ public class PlayerController : MonoBehaviour
 								  RigidbodyConstraints.FreezeRotationZ;
 
 		CharacterColor = m_StartingColor;
+
+		m_AirManeuversRemaining = m_MaxAirManeuvers;
 	}
 	
 	// Update is called once per frame
@@ -79,9 +84,12 @@ public class PlayerController : MonoBehaviour
 			m_RigidBody.MoveRotation(look);
 		}
 
-		if (!m_Falling && jump) {
+		if (jump && (m_AirManeuversRemaining > 0 && !m_Falling)) {
 			m_RigidBody.AddForce(Vector3.up * 20f, ForceMode.Impulse);
-			m_Falling = true;
+			m_AirManeuversRemaining--;
+			if(m_AirManeuversRemaining <= 0) {
+				m_Falling = true;
+			}
 		}
 
 		if (m_Falling) {
@@ -102,6 +110,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		m_Falling = false;
+		m_AirManeuversRemaining = m_MaxAirManeuvers;
 	}
 }
 
