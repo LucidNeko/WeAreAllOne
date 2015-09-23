@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class PaintableWall : MonoBehaviour, PaintableSurface
 {
 	public int m_TextureResolution = 512;
@@ -64,5 +64,26 @@ public class PaintableWall : MonoBehaviour, PaintableSurface
 
 		return true;
 	}
-}
 
+	public bool Paint(Color color, RaycastHit info) {
+		color.a = 1f;
+		Vector2 uv = info.textureCoord;
+		int x = (int)(uv.x * m_Texture.width);
+		int y = (int)(uv.y * m_Texture.height);
+		
+		for(int row = 0; row < m_Splat.height; row++) {
+			for(int col = 0; col < m_Splat.width; col++) {
+				Color c0 = m_SplatPixels[row * m_Splat.width + col];
+				Color c1 = color;
+				if(c0.a != 1f) {
+					m_Texture.SetPixel ((int)(x-m_Splat.width/2 + col), (int)(y-m_Splat.height/2 + row), c1);
+				}
+			}
+		}
+		m_Texture.Apply ();
+		
+		return true;
+	}
+
+}
+}

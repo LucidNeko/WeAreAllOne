@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class AFKShootScript : MonoBehaviour
 {
 
@@ -106,3 +106,4 @@ public class AFKShootScript : MonoBehaviour
 	}
 }
 
+}

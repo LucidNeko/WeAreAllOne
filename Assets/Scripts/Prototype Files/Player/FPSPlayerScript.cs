@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class FPSPlayerScript : MonoBehaviour {
 
 	private static Vector3 XZ_PLANE = new Vector3(1, 0, 1);
@@ -48,4 +48,5 @@ public class FPSPlayerScript : MonoBehaviour {
 			transform.position = Vector3.up * 30f;
 		}
 	}
+}
 }

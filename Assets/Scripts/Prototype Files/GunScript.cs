@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class GunScript : MonoBehaviour {
 
 	public GameObject m_BulletPrefab;
@@ -42,4 +42,5 @@ public class GunScript : MonoBehaviour {
 	private bool CanShoot() {
 		return m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Ready");
 	}
+}
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class BulletScript : MonoBehaviour {
 
 	public GameObject m_Ignore;
@@ -45,4 +45,5 @@ public class BulletScript : MonoBehaviour {
 		}
 	}
 
+}
 }

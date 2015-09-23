@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace Old {
 public class QuitScript : MonoBehaviour {
 	
 	// Update is called once per frame
@@ -13,4 +14,5 @@ public class QuitScript : MonoBehaviour {
 #endif
 		}
 	}
+}
 }

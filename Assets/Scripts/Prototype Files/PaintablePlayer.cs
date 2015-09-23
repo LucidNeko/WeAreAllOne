@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class PaintablePlayer : MonoBehaviour, PaintableSurface
 {
 
@@ -30,5 +30,13 @@ public class PaintablePlayer : MonoBehaviour, PaintableSurface
 
 		return true;
 	}
+	
+	public bool Paint(Color color, RaycastHit info) {
+		m_PC.CharacterColor = color;
+
+		return true;
+	}
+
 }
 
+}

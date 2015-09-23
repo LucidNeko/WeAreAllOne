@@ -1,40 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
-namespace Old {
-public class AFKCameraScript : MonoBehaviour {
+
+public class FPSCameraScript : MonoBehaviour {
 
 	public Transform m_Target;
+
 	public Texture2D m_Crosshair;
 	public bool m_InvertX = false;
 	public bool m_InvertY = true;
 	public float m_SpeedX = 6f;
 	public float m_SpeedY = 6f;
 
+	public IControl m_Control;
 	private Camera m_Camera;
 
 	void Start() {
+//		m_Control = GetComponentInParent<IControl> ();
 		m_Camera = GetComponent<Camera> ();
+//		m_Camera = LevelManager.Instance.GetCamera (gameObject);
 	}
 
 	void Update() {
-//		if (Input.GetMouseButtonDown (0)) {
-//			Cursor.lockState = CursorLockMode.Locked;
-//			Cursor.visible = false;
-//		}
+		if (Input.GetMouseButtonDown (0)) {
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
 		transform.position = m_Target.position;
-		transform.rotation = m_Target.rotation;
-//
-//		float dx = Input.GetAxis ("Mouse X") * m_SpeedX;
-//		float dy = Input.GetAxis ("Mouse Y") * m_SpeedY;
-//		if(m_InvertX) { dx = -dx; }
-//		if(m_InvertY) { dy = -dy; }
-//
-//		transform.Rotate (0, dx, 0, Space.World);
-//		transform.Rotate (dy, 0, 0, Space.Self);
+
+		float dx = m_Control.GetHorizontalAxis2() * m_SpeedX;
+		float dy = m_Control.GetVerticalAxis2() * m_SpeedY;
+		if(m_InvertX) { dx = -dx; }
+		if(m_InvertY) { dy = -dy; }
+
+		transform.Rotate (0, dx, 0, Space.World);
+		transform.Rotate (dy, 0, 0, Space.Self);
 	}
 
 	void OnGUI() {
@@ -46,5 +49,4 @@ public class AFKCameraScript : MonoBehaviour {
 
 		GUI.DrawTexture (new Rect (center.x - (cross.x/2f), (center.y - (cross.y/2f)), cross.x, cross.y), m_Crosshair);
 	}
-}
 }

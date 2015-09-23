@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class FPSCameraScript : MonoBehaviour {
 
 	public Texture2D m_Logo;
@@ -53,4 +53,5 @@ public class FPSCameraScript : MonoBehaviour {
 
 		GUI.DrawTexture (logoRect, m_Logo);
 	}
+}
 }

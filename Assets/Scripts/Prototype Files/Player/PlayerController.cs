@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+namespace Old {
 public class PlayerController : MonoBehaviour
 {
 	public int m_MaxAirManeuvers = 2;
@@ -114,3 +114,4 @@ public class PlayerController : MonoBehaviour
 	}
 }
 
+}

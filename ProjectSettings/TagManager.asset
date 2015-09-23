@@ -9,6 +9,7 @@ TagManager:
   - Player 3 Camera
   - Player 4 Camera
   - Targetable
+  - Camera
   layers:
   - Default
   - TransparentFX
@@ -21,10 +22,10 @@ TagManager:
   - Player
   - Player 1 Body
   - Player 2 Body
-  - 
-  - 
-  - 
-  - 
+  - Player 0
+  - Player 1
+  - Player 2
+  - Player 3
   - 
   - 
   - 
