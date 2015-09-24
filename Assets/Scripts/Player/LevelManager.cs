@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 		private set;
 	}
 
+	public int m_NumPlayers = 1;
+
 	public GameObject m_PlayerPrefab;
 	public GameObject m_CameraPrefab;
 
@@ -29,10 +31,13 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 	}
 
 	void Start() {
-		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
-		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-5);
-		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-10);
-		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-15);
+		for (int i = 0; i < m_NumPlayers; i++) {
+			CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
+		}
+//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
+//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-5);
+//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-10);
+//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-15);
 	}
 
 	public GameObject CreatePlayer<T>() where T : Component, IControl {
