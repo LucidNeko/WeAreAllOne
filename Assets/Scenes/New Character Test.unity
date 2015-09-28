@@ -4697,6 +4697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ee4ab32efc440418da83c1121a5075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_NumPlayers: 1
   m_PlayerPrefab: {fileID: 158374, guid: 287bc26f4548a79408688d67cb484397, type: 2}
   m_CameraPrefab: {fileID: 162140, guid: 71a0b806097313b48830d0572319902e, type: 2}
 --- !u!4 &258428051

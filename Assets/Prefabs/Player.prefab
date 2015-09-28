@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014fbcd5dbc8db04389917b9c5c76a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxAirManeuvers: 2
+  m_MaxAirManeuvers: 1
   m_Speed: 6
   m_InAirGravityMultiplier: 3
 --- !u!114 &11426250

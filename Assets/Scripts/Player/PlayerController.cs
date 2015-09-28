@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 
-	public int m_MaxAirManeuvers = 2;
+	public int m_MaxAirManeuvers = 1; //effectively get 1 extra manouver because resets while on ground
 
 	public float m_Speed = 6f;
 	public float m_InAirGravityMultiplier = 3f;
@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 	private bool m_IsGrounded = true;
 
 	private Vector3 dash = Vector3.zero;
+
+	private Transform m_Feet;
 
 
 	//Awake is where you initialize yourself, but you don't speak with anyone else. 
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
 		//do it in start for first time, as m_Control doesn't exist yet for OnEnable
 		m_Control = GetComponent<IControl> ();
 		m_Control.OnDash += OnDash;
+
+		m_Feet = transform.FindChild ("Feet");
 	}
 
 	//Awake
@@ -108,10 +112,21 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void SetGroundStatus(bool state, Collider other) {
-		m_IsGrounded = state;
+//		m_IsGrounded = state;
+//
+//		if (m_IsGrounded) {
+//			m_AirManeuversRemaining = m_MaxAirManeuvers;
+//		}
+	}
 
-		if (m_IsGrounded) {
+	private void SetGroundStatus() {
+		Ray ray = new Ray (m_Feet.position, Vector3.down);
+		RaycastHit info;
+		if (Physics.SphereCast (ray, 0.1f, out info, 1f)) {
+			m_IsGrounded = true;
 			m_AirManeuversRemaining = m_MaxAirManeuvers;
+		} else {
+			m_IsGrounded = false;
 		}
 	}
 
