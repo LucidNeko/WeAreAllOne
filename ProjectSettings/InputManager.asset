@@ -116,7 +116,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
     m_Name: PS4 Horizontal P1
     descriptiveName: 
@@ -132,7 +132,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 0
+    joyNum: 2
   - serializedVersion: 3
     m_Name: PS4 Horizontal P2
     descriptiveName: 
@@ -148,7 +148,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 0
+    joyNum: 3
   - serializedVersion: 3
     m_Name: PS4 Horizontal P3
     descriptiveName: 
@@ -164,7 +164,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 0
+    joyNum: 4
   - serializedVersion: 3
     m_Name: PS4 Vertical P0
     descriptiveName: 
@@ -180,7 +180,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
     m_Name: PS4 Vertical P1
     descriptiveName: 
@@ -196,7 +196,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 0
+    joyNum: 2
   - serializedVersion: 3
     m_Name: PS4 Vertical P2
     descriptiveName: 
@@ -212,7 +212,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 0
+    joyNum: 3
   - serializedVersion: 3
     m_Name: PS4 Vertical P3
     descriptiveName: 
@@ -228,7 +228,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 0
+    joyNum: 4
   - serializedVersion: 3
     m_Name: PS4 Horizontal2 P0
     descriptiveName: 
@@ -241,10 +241,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: PS4 Horizontal2 P1
     descriptiveName: 
@@ -257,10 +257,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 2
+    joyNum: 2
   - serializedVersion: 3
     m_Name: PS4 Horizontal2 P2
     descriptiveName: 
@@ -273,10 +273,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 2
+    joyNum: 3
   - serializedVersion: 3
     m_Name: PS4 Horizontal2 P3
     descriptiveName: 
@@ -289,10 +289,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 2
+    joyNum: 4
   - serializedVersion: 3
     m_Name: PS4 Vertical2 P0
     descriptiveName: 
@@ -305,10 +305,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 3
+    joyNum: 1
   - serializedVersion: 3
     m_Name: PS4 Vertical2 P1
     descriptiveName: 
@@ -321,10 +321,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 3
+    joyNum: 2
   - serializedVersion: 3
     m_Name: PS4 Vertical2 P2
     descriptiveName: 
@@ -337,10 +337,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 3
+    joyNum: 3
   - serializedVersion: 3
     m_Name: PS4 Vertical2 P3
     descriptiveName: 
@@ -353,10 +353,10 @@ InputManager:
     dead: .189999998
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
-    joyNum: 0
+    axis: 3
+    joyNum: 4
   - serializedVersion: 3
     m_Name: PS4 Shoot P0
     descriptiveName: 
@@ -372,7 +372,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
     m_Name: PS4 Shoot P1
     descriptiveName: 
@@ -388,7 +388,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 2
   - serializedVersion: 3
     m_Name: PS4 Shoot P2
     descriptiveName: 
@@ -404,7 +404,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 3
   - serializedVersion: 3
     m_Name: PS4 Shoot P3
     descriptiveName: 
@@ -420,13 +420,13 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 4
   - serializedVersion: 3
     m_Name: PS4 Jump P0
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 3
+    positiveButton: joystick button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -436,13 +436,13 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
     m_Name: PS4 Jump P1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 3
+    positiveButton: joystick button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -452,13 +452,13 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 2
   - serializedVersion: 3
     m_Name: PS4 Jump P2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 3
+    positiveButton: joystick button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -468,13 +468,13 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 3
   - serializedVersion: 3
     m_Name: PS4 Jump P3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 3
+    positiveButton: joystick button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -484,4 +484,4 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 4
