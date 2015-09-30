@@ -3,13 +3,13 @@ using System.Collections;
 
 public class KeyboardControl : MonoBehaviour, IControl
 {
-	public static readonly string HORIZONTAL_AXIS = "Horizontal";
-	public static readonly string VERTICAL_AXIS = "Vertical";
+	public static readonly string HORIZONTAL_AXIS = "Horizontal Keyboard";
+	public static readonly string VERTICAL_AXIS = "Vertical Keyboard";
 
 	public static readonly string HORIZONTAL_AXIS2 = "Mouse X";
 	public static readonly string VERTICAL_AXIS2 = "Mouse Y";
 
-	public static readonly string JUMP = "Jump";
+	public static readonly string JUMP = "Jump Keyboard";
 	public static readonly int SHOOT = 0;
 
 	//dash

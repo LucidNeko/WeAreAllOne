@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 
 	void Start() {
 		for (int i = 0; i < m_NumPlayers; i++) {
-			CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
+			CreatePlayer<KeyboardControl>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
 		}
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-5);
@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 			Camera camera = player.GetComponentInChildren<Camera>();
 			m_Players[m_PlayerCount] = player;
 			player.layer = LayerMask.NameToLayer("Player " + m_PlayerCount);
+			player.GetComponent<PlayerStats>().PlayerColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 //			foreach(Transform t in player.GetComponentsInChildren<Transform>(true)) {
 //				t.gameObject.layer = player.layer;
 //			}

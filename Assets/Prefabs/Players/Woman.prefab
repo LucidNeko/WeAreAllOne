@@ -410,6 +410,8 @@ GameObject:
   - 136: {fileID: 13632708}
   - 114: {fileID: 11423622}
   - 114: {fileID: 11495918}
+  - 114: {fileID: 11425502}
+  - 114: {fileID: 11484048}
   m_Layer: 0
   m_Name: Woman
   m_TagString: Player
@@ -473,8 +475,6 @@ GameObject:
   - 33: {fileID: 3306386}
   - 23: {fileID: 2302010}
   - 95: {fileID: 9568988}
-  - 114: {fileID: 11452798}
-  - 120: {fileID: 12023656}
   m_Layer: 0
   m_Name: Burst Rifle
   m_TagString: Untagged
@@ -955,6 +955,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420500}
+  - 120: {fileID: 12085350}
+  - 114: {fileID: 11464960}
   m_Layer: 0
   m_Name: Barrell
   m_TagString: Untagged
@@ -2183,6 +2185,19 @@ MonoBehaviour:
   m_MaxAirManeuvers: 2
   m_Speed: 4
   m_InAirGravityMultiplier: 2
+--- !u!114 &11425502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fb2dbff66684ae1a5184b76c6c2b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayerRenderer: {fileID: 13737582}
+  m_GunRenderer: {fileID: 2302010}
 --- !u!114 &11444496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2199,12 +2214,12 @@ MonoBehaviour:
   m_InvertY: 1
   m_SpeedX: 6
   m_SpeedY: 6
---- !u!114 &11452798
+--- !u!114 &11464960
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143272}
+  m_GameObject: {fileID: 185590}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f4d360346bd16446a8b51c13a59e452, type: 3}
@@ -2222,6 +2237,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400dc158b0beeb8458e18cdf42d0c05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11484048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71631721402f411c8b4f8dc74e48fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11495918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2233,12 +2259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1351b519adbeda4cab27e91c5f1ecd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &12023656
+--- !u!120 &12085350
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143272}
+  m_GameObject: {fileID: 185590}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

@@ -13,10 +13,13 @@ public class DrawRay : MonoBehaviour {
 
 	private bool m_Active = false;
 
+	private PlayerStats m_PlayerStats;
+
 	void Start() {
 		m_LineRenderer = GetComponent<LineRenderer> ();
 		m_Camera = GetComponentInParent<Camera> ();
 		m_Control = GetComponentInParent<IControl> ();
+		m_PlayerStats = GetComponentInParent<PlayerStats> ();
 	}
 
 	void Update() {
@@ -38,8 +41,7 @@ public class DrawRay : MonoBehaviour {
 			Debug.Log ("hit: " + info.collider.gameObject.name);
 			Old.PaintableSurface ps = info.collider.gameObject.GetComponent<Old.PaintableSurface>();
 			if(ps != null) {
-				Color color = Color.red;
-				ps.Paint(color, info);
+				ps.Paint(m_PlayerStats.PlayerColor, info);
 			}
 			m_LineRenderer.SetPosition (1, info.point);
 		} else {
