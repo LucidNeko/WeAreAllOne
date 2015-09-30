@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 
 	void Start() {
 		for (int i = 0; i < m_NumPlayers; i++) {
-			CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
+			CreatePlayer<PS4Control>().transform.position = new Vector3(0,0,0);
 		}
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-5);
