@@ -33,8 +33,20 @@ public class FPSCameraScript : MonoBehaviour {
 
 		transform.root.Rotate (0, dx, 0, Space.World);
 		transform.Rotate (dy, 0, 0, Space.Self);
-	}
 
+		//clamp in range so can't look full 360
+		Vector3 v = transform.localEulerAngles;
+		if (v.y > 90) {
+			if(v.x > 20 && v.x < 120) {
+				v.x = 90;
+			} else {
+				v.x = 270;
+			}
+			v.y = 0; v.z = 0;
+		}
+		transform.localEulerAngles = v;
+	}
+	
 	void OnGUI() {
 		Vector2 center = m_Camera.pixelRect.center;
 		center.y = Screen.height - center.y; //screen to GUI coords
