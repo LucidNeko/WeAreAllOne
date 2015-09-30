@@ -3,21 +3,18 @@ using System.Collections;
 
 public class FPSCameraScript : MonoBehaviour {
 
-	public Transform m_Target;
-
 	public Texture2D m_Crosshair;
 	public bool m_InvertX = false;
 	public bool m_InvertY = true;
 	public float m_SpeedX = 6f;
 	public float m_SpeedY = 6f;
 
-	public IControl m_Control;
+	private IControl m_Control;
 	private Camera m_Camera;
 
 	void Start() {
-//		m_Control = GetComponentInParent<IControl> ();
+		m_Control = GetComponentInParent<IControl> ();
 		m_Camera = GetComponent<Camera> ();
-//		m_Camera = LevelManager.Instance.GetCamera (gameObject);
 	}
 
 	void Update() {
@@ -29,14 +26,12 @@ public class FPSCameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		transform.position = m_Target.position;
-
 		float dx = m_Control.GetHorizontalAxis2() * m_SpeedX;
 		float dy = m_Control.GetVerticalAxis2() * m_SpeedY;
 		if(m_InvertX) { dx = -dx; }
 		if(m_InvertY) { dy = -dy; }
 
-		transform.Rotate (0, dx, 0, Space.World);
+		transform.root.Rotate (0, dx, 0, Space.World);
 		transform.Rotate (dy, 0, 0, Space.Self);
 	}
 

@@ -8,6 +8,7 @@ public class FPSPlayerScript : MonoBehaviour {
 	private PlayerController m_PlayerController;
 	private Transform m_Camera;
 	private IControl m_Control;
+	private Animator m_Animator;
 
 	private Vector3 move = Vector3.zero;
 	private bool jump = false;
@@ -16,8 +17,9 @@ public class FPSPlayerScript : MonoBehaviour {
 	void Start () {
 		m_Control = GetComponent<IControl> ();
 		m_PlayerController = GetComponent<PlayerController> ();
-//		m_Camera = GetComponentInChildren<Camera> ().transform;
-		m_Camera = LevelManager.Instance.GetCamera (gameObject).transform;
+		m_Camera = GetComponentInChildren<Camera> ().transform;
+//		m_Camera = LevelManager.Instance.GetCamera (gameObject).transform;
+		m_Animator = GetComponent<Animator> ();
 	}
 
 	void Update() {
@@ -25,7 +27,24 @@ public class FPSPlayerScript : MonoBehaviour {
 
 		float h = m_Control.GetHorizontalAxis();
 		float v = m_Control.GetVerticalAxis();
-		
+
+		move.x = h;
+		move.z = v;
+
+		if (h != 0 || v != 0) {
+			Quaternion q = Quaternion.LookRotation (move);
+			float rot = q.eulerAngles.y;
+			if (rot > 180) {
+				rot -= 360;
+			}
+			
+			m_Animator.SetFloat ("InputMagnitude", move.magnitude);
+			m_Animator.SetFloat ("InputDirection", rot);
+		} else {
+			m_Animator.SetFloat ("InputMagnitude", 0);
+			m_Animator.SetFloat ("InputDirection", 0);
+		}
+
 		Vector3 forward = m_Camera.forward;
 		
 		forward = Vector3.Scale(forward, XZ_PLANE).normalized;

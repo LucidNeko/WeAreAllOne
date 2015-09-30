@@ -16,7 +16,7 @@ public class DrawRay : MonoBehaviour {
 	void Start() {
 		m_LineRenderer = GetComponent<LineRenderer> ();
 		m_Camera = GetComponentInParent<Camera> ();
-		m_Control = GetComponentInParent<FPSCameraScript> ().m_Control;
+		m_Control = GetComponentInParent<IControl> ();
 	}
 
 	void Update() {
@@ -38,7 +38,7 @@ public class DrawRay : MonoBehaviour {
 			Debug.Log ("hit: " + info.collider.gameObject.name);
 			Old.PaintableSurface ps = info.collider.gameObject.GetComponent<Old.PaintableSurface>();
 			if(ps != null) {
-				Color color = m_Camera.GetComponent<FPSCameraScript>().m_Target.transform.root.gameObject.GetComponentInChildren<Renderer>().material.color;
+				Color color = Color.red;
 				ps.Paint(color, info);
 			}
 			m_LineRenderer.SetPosition (1, info.point);

@@ -50,8 +50,6 @@ public class MotusManControl : MonoBehaviour {
 
 		m_Animator.SetBool ("IsRightLegUp", m_RightFoot.position.y > m_LeftFoot.position.y);
 
-
-
 		float mx = Input.GetAxis ("Mouse X");
 		float my = Input.GetAxis ("Mouse Y");
 
