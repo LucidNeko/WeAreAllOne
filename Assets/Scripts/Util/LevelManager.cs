@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 	private static readonly int m_MaxPlayers = 4;
 	private GameObject[] m_Players = new GameObject[m_MaxPlayers];
 
+	private int m_NumControllersConnected = 0;
+
 	void Awake() {
 		if (Instance != null && Instance != this) {
 			Destroy(gameObject);
@@ -34,17 +36,29 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 //			m_Players[i].GetComponent<PS4Control>().m_Player = i;
 //		}
 
-		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-		m_Players[0].GetComponent<PS4Control>().m_Player = 0;
+		string[] joysticks = Input.GetJoystickNames ();
 
-		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-		m_Players[1].GetComponent<PS4Control>().m_Player = 1;
+		if (joysticks.Length == 0) {
+			CreatePlayer<KeyboardControl> ().transform.position = new Vector3 (Random.Range (-20, 20), 20, Random.Range (-20, 20));
+		} else {
+			for(int i = 0; i < joysticks.Length; i++) {
+				GameObject player = CreatePlayer<PS4Control>();
+				player.transform.position = new Vector3(Random.Range(-20, 20),20,Random.Range(-20, 20));
+				m_Players[i].GetComponent<PS4Control>().m_Player = i;
+			}
+		}
 
-		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-		m_Players[2].GetComponent<PS4Control>().m_Player = 2;
-
-		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-		m_Players[3].GetComponent<PS4Control>().m_Player = 3;
+//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+//		m_Players[0].GetComponent<PS4Control>().m_Player = 0;
+//
+//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+//		m_Players[1].GetComponent<PS4Control>().m_Player = 1;
+//
+//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+//		m_Players[2].GetComponent<PS4Control>().m_Player = 2;
+//
+//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+//		m_Players[3].GetComponent<PS4Control>().m_Player = 3;
 
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
 
@@ -52,6 +66,10 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-5);
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-10);
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-15);
+	}
+
+	void Update() {
+		//watch for new controllers
 	}
 
 	public GameObject CreatePlayer<T>() where T : Component, IControl {

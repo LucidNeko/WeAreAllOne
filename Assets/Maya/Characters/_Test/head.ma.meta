@@ -1,20 +1,14 @@
 fileFormatVersion: 2
-guid: 01679fb668fde44caa71efd4c44b7648
-timeCreated: 1443672780
+guid: 120f009e4f6b1405098b57ca75d18f99
+timeCreated: 1443674308
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: imagePlane1
-    100002: imagePlane2
-    100004: pCylinder8
-    100006: //RootNode
-    400000: imagePlane1
-    400002: imagePlane2
-    400004: pCylinder8
-    400006: //RootNode
-    2300000: pCylinder8
-    3300000: pCylinder8
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: pCylinder8
     9500000: //RootNode
   materials:
@@ -26,10 +20,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
-    animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
