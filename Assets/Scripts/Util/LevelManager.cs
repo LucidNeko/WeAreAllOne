@@ -37,7 +37,16 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
 		m_Players[0].GetComponent<PS4Control>().m_Player = 0;
 
-		CreatePlayer<KeyboardControl>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+		m_Players[1].GetComponent<PS4Control>().m_Player = 1;
+
+		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+		m_Players[2].GetComponent<PS4Control>().m_Player = 2;
+
+		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
+		m_Players[3].GetComponent<PS4Control>().m_Player = 3;
+
+//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
 
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
 //		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-5);
