@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream:Assets/Maya/Characters/woman.ma
 //Maya ASCII 2015 scene
 //Name: woman.ma
 //Last modified: Thu, Sep 24, 2015 03:08:49 PM
+=======
+//Maya ASCII 2016 scene
+//Name: womanCharacter.ma
+//Last modified: Mon, Sep 28, 2015 01:00:28 PM
+>>>>>>> Stashed changes:Assets/Maya/Prototype Files/womanCharacter.ma
 //Codeset: UTF-8
 requires maya "2015";
 requires -nodeType "HIKSolverNode" -nodeType "HIKCharacterNode" -nodeType "HIKSkeletonGeneratorNode"
@@ -19,13 +25,18 @@ fileInfo "osv" "Mac OS X 10.9.4";
 fileInfo "license" "student";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
+<<<<<<< Updated upstream:Assets/Maya/Characters/woman.ma
 	setAttr ".t" -type "double3" 93.451536122428294 88.039200489036205 109.12605364029416 ;
 	setAttr ".r" -type "double3" 339.26164730425864 1840.1999999997661 0 ;
+=======
+	setAttr ".t" -type "double3" 30.257632960615705 52.122654184393554 158.5092267522993 ;
+	setAttr ".r" -type "double3" 353.66164730425879 1810.199999999794 0 ;
+>>>>>>> Stashed changes:Assets/Maya/Prototype Files/womanCharacter.ma
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".pze" yes;
 	setAttr ".fl" 34.999999999999986;
-	setAttr ".coi" 151.71005402658656;
+	setAttr ".coi" 161.26979932837409;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
