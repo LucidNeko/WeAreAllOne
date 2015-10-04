@@ -1951,7 +1951,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!54 &5405614
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1994,7 +1993,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131058}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 77683e4738ab44ddeb5d66ddbbe0802a, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 5518d03f310c249769a03b56210c996b, type: 3}
   m_Controller: {fileID: 9100000, guid: 930f1affd90ed4b84a5ccce0737d5592, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -2159,7 +2158,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300000, guid: 77683e4738ab44ddeb5d66ddbbe0802a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 5518d03f310c249769a03b56210c996b, type: 3}
   m_Bones:
   - {fileID: 460300}
   - {fileID: 407830}
