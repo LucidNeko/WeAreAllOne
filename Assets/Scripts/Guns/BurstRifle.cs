@@ -15,7 +15,7 @@ public class BurstRifle : Gun {
 	private Camera m_Camera;
 
 	private bool m_CanShoot = true;
-	private int m_MaxShots = 6;
+	private int m_MaxShots = 3;
 	private int m_ShotsFired = 0;
 
 	private bool m_Equipped = false;
