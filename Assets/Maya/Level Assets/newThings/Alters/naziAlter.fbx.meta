@@ -1,23 +1,25 @@
 fileFormatVersion: 2
-guid: bc2d1d3b63de04a8485b458d338eade9
-timeCreated: 1443839539
+guid: 178f018b4abe74937b85ab5dac15a2d7
+timeCreated: 1444174110
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: cube
-    100002: //RootNode
-    100004: naziAlter
-    400000: cube
-    400002: //RootNode
-    400004: naziAlter
-    2300000: cube
-    2300002: naziAlter
-    3300000: cube
-    3300002: naziAlter
-    4300000: cube
-    4300002: naziAlter
-    7400000: Take 001
+    100000: Backing2
+    100002: Cube
+    100004: //RootNode
+    400000: Backing2
+    400002: Cube
+    400004: //RootNode
+    2300000: Backing2
+    2300002: Cube
+    3300000: Backing2
+    3300002: Cube
+    4300000: Cube
+    4300002: Backing2
+    6400000: Backing2
+    6400002: Cube
+    7400000: CubeRotation
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -34,13 +36,45 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CubeRotation
+      takeName: Take 001
+      firstFrame: 23
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Backing2
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

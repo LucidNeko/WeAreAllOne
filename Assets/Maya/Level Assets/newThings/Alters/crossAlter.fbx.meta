@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fc3cc7bb2ea3148c7b0aba6532e72820
-timeCreated: 1443833629
+timeCreated: 1444171076
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -17,7 +17,9 @@ ModelImporter:
     3300002: spingCube
     4300000: spingCube
     4300002: cross1
-    7400000: cubeRotation
+    6400000: cross1
+    6400002: spingCube
+    7400000: CubeRotation
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -36,17 +38,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: cubeRotation
+      name: CubeRotation
       takeName: Take 001
-      firstFrame: 25
-      lastFrame: 169
+      firstFrame: 23
+      lastFrame: 170
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -72,7 +74,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
