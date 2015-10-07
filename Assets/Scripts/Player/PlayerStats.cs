@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour {
 	void Awake() {
 		m_Material = new Material(Shader.Find ("Standard"));
 		m_NullMaterial = new Material(Shader.Find ("Standard"));
+		m_NullMaterial.color = new Color (0, 0, 0);
 	}
 
 	void Start() {
