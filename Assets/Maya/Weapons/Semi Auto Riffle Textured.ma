@@ -1,6 +1,6 @@
 //Maya ASCII 2015 scene
 //Name: Semi Auto Riffle Textured.ma
-//Last modified: Mon, Sep 28, 2015 01:30:43 PM
+//Last modified: Thu, Oct 08, 2015 01:06:01 PM
 //Codeset: UTF-8
 requires maya "2015";
 currentUnit -l centimeter -a degree -t film;
@@ -11377,6 +11377,9 @@ createNode polyTweakUV -n "polyTweakUV6";
 createNode transformGeometry -n "transformGeometry1";
 	setAttr ".txf" -type "matrix" 0.027830054939893257 0 0 0 0 0.027830054939893257 0 0
 		 0 0 0.027830054939893257 0 0 0.11132021975957303 0.61226120867765166 1;
+createNode transformGeometry -n "transformGeometry2";
+	setAttr ".txf" -type "matrix" 1.3131220626910083 0 0 0 0 1.3131220626910083 0 0
+		 0 0 1.3131220626910083 0 0 0 0 1;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -11412,9 +11415,9 @@ select -ne :defaultHardwareRenderGlobals;
 	setAttr ".res" -type "string" "ntsc_4d 646 485 1.333";
 select -ne :ikSystem;
 	setAttr -s 4 ".sol";
-connectAttr "transformGeometry1.og" "pCylinder4Shape.i";
-connectAttr "groupId1.id" "pCylinder4Shape.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "pCylinder4Shape.iog.og[0].gco";
+connectAttr "groupId1.id" "pCylinder4Shape.iog.og[0].gid";
+connectAttr "transformGeometry2.og" "pCylinder4Shape.i";
 connectAttr "polyTweakUV6.uvtk[0]" "pCylinder4Shape.uvst[0].uvtw";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
@@ -11480,6 +11483,7 @@ connectAttr "polyTweakUV5.out" "polyPlanarProj11.ip";
 connectAttr "pCylinder4Shape.wm" "polyPlanarProj11.mp";
 connectAttr "polyPlanarProj11.out" "polyTweakUV6.ip";
 connectAttr "polyTweakUV6.out" "transformGeometry1.ig";
+connectAttr "transformGeometry1.og" "transformGeometry2.ig";
 connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "file1.msg" ":defaultTextureList1.tx" -na;

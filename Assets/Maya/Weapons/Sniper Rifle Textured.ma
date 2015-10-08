@@ -1,6 +1,6 @@
 //Maya ASCII 2015 scene
 //Name: Sniper Rifle Textured.ma
-//Last modified: Wed, Oct 07, 2015 12:53:27 PM
+//Last modified: Thu, Oct 08, 2015 01:01:50 PM
 //Codeset: UTF-8
 requires maya "2015";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOptions" -nodeType "mentalrayGlobals"
@@ -14,12 +14,12 @@ fileInfo "cutIdentifier" "201503261530-955654";
 fileInfo "osv" "Mac OS X 10.9.4";
 fileInfo "license" "student";
 createNode transform -s -n "persp";
-	setAttr ".t" -type "double3" 4.6237545650333489 3.0233223782176113 3.3919241399470179 ;
+	setAttr ".t" -type "double3" 1.5460866506703099 1.0407400360563652 1.2861497620714271 ;
 	setAttr ".r" -type "double3" -25.538352730380204 -1029.0000000002553 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v";
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 9.1272892361213067;
+	setAttr ".coi" 4.918726744900539;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -15073,6 +15073,9 @@ createNode transformGeometry -n "transformGeometry3";
 createNode transformGeometry -n "transformGeometry4";
 	setAttr ".txf" -type "matrix" 1.1324211446670109 0 0 0 0 1.1324211446670109 0 0
 		 0 0 1.1324211446670109 0 -8.3941154094556696e-05 0 0 1;
+createNode transformGeometry -n "transformGeometry5";
+	setAttr ".txf" -type "matrix" 0.81600787385950779 0 0 0 0 0.81600787385950779 0 0
+		 0 0 0.81600787385950779 0 0.00011663176187897534 0 0 1;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -15106,7 +15109,7 @@ select -ne :defaultHardwareRenderGlobals;
 	setAttr ".res" -type "string" "ntsc_4d 646 485 1.333";
 select -ne :ikSystem;
 	setAttr -s 4 ".sol";
-connectAttr "transformGeometry4.og" "pCylinder3Shape.i";
+connectAttr "transformGeometry5.og" "pCylinder3Shape.i";
 connectAttr "groupId1.id" "pCylinder3Shape.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "pCylinder3Shape.iog.og[0].gco";
 connectAttr ":mentalrayGlobals.msg" ":mentalrayItemsList.glb";
@@ -15160,6 +15163,7 @@ connectAttr "polyTweak1.out" "transformGeometry1.ig";
 connectAttr "transformGeometry1.og" "transformGeometry2.ig";
 connectAttr "transformGeometry2.og" "transformGeometry3.ig";
 connectAttr "transformGeometry3.og" "transformGeometry4.ig";
+connectAttr "transformGeometry4.og" "transformGeometry5.ig";
 connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "file1.msg" ":defaultTextureList1.tx" -na;
