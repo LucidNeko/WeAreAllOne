@@ -14,14 +14,24 @@ public class PaintableWall : MonoBehaviour, PaintableSurface
 
 	private Color[] m_SplatPixels;
 
+	private bool m_Initialized = false;
+
 	// Use this for initialization
 	void Start ()
 	{
+//		Initialize ();
+	}
+
+	private void Initialize() {
+		if (m_Initialized) {
+			return;
+		}
+
 		//Create white pixel array
 		Color[] white = new Color[m_TextureResolution * m_TextureResolution];
 		for(int i = 0; i < m_TextureResolution * m_TextureResolution; i++) {
-//			white[i] = Color.white;
-
+			//			white[i] = Color.white;
+			
 			if(m_Transparant) {
 				white[i] = new Color(1f,1f,1f,0f);
 			} else {
@@ -34,12 +44,19 @@ public class PaintableWall : MonoBehaviour, PaintableSurface
 		m_Texture.SetPixels (white);
 		m_Texture.Apply ();
 		GetComponent<Renderer> ().material.mainTexture = m_Texture;
-
+		
 		//Extract the pixels from the splat effect
 		m_SplatPixels = m_Splat.GetPixels ();
+
+		m_Initialized = true;
 	}
 	
-	public bool Paint(Color color, Collision info) {	
+	public bool Paint(PlayerStats shooter, Collision info) {	
+		if (!m_Initialized) {
+			Initialize ();
+		}
+
+		Color color = shooter.PlayerColor;
 		color.a = 1f;
 		foreach (ContactPoint p in info.contacts) {
 			RaycastHit hit;
@@ -65,7 +82,12 @@ public class PaintableWall : MonoBehaviour, PaintableSurface
 		return true;
 	}
 
-	public bool Paint(Color color, RaycastHit info) {
+	public bool Paint(PlayerStats shooter, RaycastHit info) {
+		if (!m_Initialized) {
+			Initialize ();
+		}
+
+		Color color = shooter.PlayerColor;
 		color.a = 1f;
 		Vector2 uv = info.textureCoord;
 		int x = (int)(uv.x * m_Texture.width);

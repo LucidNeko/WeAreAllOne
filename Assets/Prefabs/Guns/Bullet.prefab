@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2387366}
   - 54: {fileID: 5473610}
   - 114: {fileID: 11408130}
+  - 114: {fileID: 11497112}
   m_Layer: 15
   m_Name: Bullet
   m_TagString: Bullet
@@ -89,6 +90,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca650981b4b08b443b2b750344c72e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Explosion: {fileID: 173368, guid: 90c921fba2943e042ae76d7e432b57c5, type: 2}
+--- !u!114 &11497112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c227ebac61ea31c49b527b4ffeea1c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Duration: 20
 --- !u!135 &13580326
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -113,6 +127,14 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 32f82412b2af7b543b585fd24d71b7cc,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Explosion
+      value: 
+      objectReference: {fileID: 173368, guid: 90c921fba2943e042ae76d7e432b57c5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Duration
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102352}

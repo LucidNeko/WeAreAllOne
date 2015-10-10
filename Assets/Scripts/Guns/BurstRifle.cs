@@ -77,7 +77,8 @@ public class BurstRifle : Gun {
 		m_CanShoot = false;
 		GameObject bullet = Instantiate (m_Bullet, m_BarrelEnd.position, m_BarrelEnd.rotation) as GameObject;
 		bullet.transform.parent = m_Bullets.transform; //put in container
-		bullet.GetComponent<Bullet> ().SetColor (m_PlayerStats.PlayerColor);
+//		bullet.GetComponent<Bullet> ().SetColor (m_PlayerStats.PlayerColor);
+		bullet.GetComponent<Bullet> ().SetStats (m_PlayerStats);
 		
 		bullet.GetComponent<Rigidbody> ().AddForce (GetBulletTrajectory (m_Camera, m_BarrelEnd) * m_BulletSpeed, ForceMode.Impulse);
 		yield return new WaitForSeconds(0.05f);

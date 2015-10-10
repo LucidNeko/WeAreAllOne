@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour, ILevelManager {
 
@@ -8,9 +9,10 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 		private set;
 	}
 
-	public int m_NumPlayers = 1;
-
 	public GameObject m_PlayerPrefab;
+
+	public GameObject[] m_SpawnPoints;
+	public GUIStyle[] m_Styles;
 
 	private int m_PlayerCount = 0;
 	private static readonly int m_MaxPlayers = 4;
@@ -28,44 +30,30 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 
 		//don't destroy between scenes
 		DontDestroyOnLoad (gameObject);
+
+		m_Styles = new GUIStyle[m_SpawnPoints.Length];
+		for (int i = 0; i < m_Styles.Length; i++) {
+			Texture2D t = new Texture2D(1, 1);
+			t.wrapMode = TextureWrapMode.Repeat;
+			t.SetPixel(0, 0, m_SpawnPoints[i].GetComponent<PlayerSpawner>().m_Color);
+			t.Apply();
+			m_Styles[i] = new GUIStyle();
+			m_Styles[i].normal.background = t;
+		}
 	}
 
 	void Start() {
-//		for (int i = 0; i < m_NumPlayers; i++) {
-//			CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-//			m_Players[i].GetComponent<PS4Control>().m_Player = i;
-//		}
-
 		string[] joysticks = Input.GetJoystickNames ();
 
 		if (joysticks.Length == 0) {
-			CreatePlayer<KeyboardControl> ().transform.position = new Vector3 (Random.Range (-20, 20), 20, Random.Range (-20, 20));
+			CreatePlayer<KeyboardControl> ();
+			CreatePlayer<KeyboardControl> ();
 		} else {
 			for(int i = 0; i < joysticks.Length; i++) {
 				GameObject player = CreatePlayer<PS4Control>();
-				player.transform.position = new Vector3(Random.Range(-20, 20),20,Random.Range(-20, 20));
 				m_Players[i].GetComponent<PS4Control>().m_Player = i;
 			}
 		}
-
-//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-//		m_Players[0].GetComponent<PS4Control>().m_Player = 0;
-//
-//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-//		m_Players[1].GetComponent<PS4Control>().m_Player = 1;
-//
-//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-//		m_Players[2].GetComponent<PS4Control>().m_Player = 2;
-//
-//		CreatePlayer<PS4Control>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-//		m_Players[3].GetComponent<PS4Control>().m_Player = 3;
-
-//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(Random.Range(-20, 20),0,Random.Range(-20, 20));
-
-//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,0);
-//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-5);
-//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-10);
-//		CreatePlayer<KeyboardControl>().transform.position = new Vector3(0,0,-15);
 	}
 
 	void Update() {
@@ -79,47 +67,23 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 			Camera camera = player.GetComponentInChildren<Camera>();
 			m_Players[m_PlayerCount] = player;
 			player.layer = LayerMask.NameToLayer("Player " + m_PlayerCount);
-			player.GetComponent<PlayerStats>().PlayerColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-//			foreach(Transform t in player.GetComponentsInChildren<Transform>(true)) {
-//				t.gameObject.layer = player.layer;
-//			}
-//			camera.cullingMask = camera.cullingMask & ~(1 << player.layer);
-			m_PlayerCount++;
 
 			//attach control
 			player.AddComponent<T>();
 
+			m_SpawnPoints[m_PlayerCount].GetComponent<PlayerSpawner>().Spawn(player);
+
+			m_PlayerCount++;
+
 			//adjust cameras
 			UpdateCameras();
 
-			//set random color TODO: Remove
-			player.GetComponentInChildren<Renderer>().material.color = new Color(UnityEngine.Random.Range(0f,1f), UnityEngine.Random.Range(0f,1f), UnityEngine.Random.Range(0f,1f));
-			
 			return player;
 		}
 		return null;
 	}
-
-	public Camera GetCamera(GameObject player) {
-		return player.GetComponentInChildren<Camera> ();
-	}
 	
 	private void UpdateCameras() {
-//		if(m_PlayerCount == 1) {
-//			m_Cameras[0].rect = new Rect(0,0,1,1);
-//		} else if(m_PlayerCount == 2) {
-//			m_Cameras[0].rect = new Rect(0,0.5f,1,0.5f);
-//			m_Cameras[1].rect = new Rect(0,0,1,0.5f);
-//		} else if(m_PlayerCount == 3) {
-//			m_Cameras[0].rect = new Rect(0,0.5f,0.5f,0.5f);
-//			m_Cameras[1].rect = new Rect(0.5f,0.5f,0.5f,0.5f);
-//			m_Cameras[2].rect = new Rect(0,0,0.5f,0.5f);
-//		} else if(m_PlayerCount == 4) {
-//			m_Cameras[0].rect = new Rect(0,0.5f,0.5f,0.5f);
-//			m_Cameras[1].rect = new Rect(0.5f,0.5f,0.5f,0.5f);
-//			m_Cameras[2].rect = new Rect(0,0,0.5f,0.5f);
-//			m_Cameras[3].rect = new Rect(0.5f,0,0.5f,0.5f);
-//		}
 		if(m_PlayerCount == 1) {
 			m_Players[0].GetComponentInChildren<Camera>().rect = new Rect(0,0,1,1);
 		} else if(m_PlayerCount == 2) {
@@ -137,4 +101,33 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 		}
 	}
 
+	void OnGUI() {
+		int[] teams = GetTeamInfo ();
+
+		float height = 10;
+
+		float x = 0;
+		float y = Screen.height / 2 - height / 2;
+
+		for (int i = 0; i < teams.Length; i++) {
+			float width = Screen.width * teams[i]/m_PlayerCount;
+
+			Rect rect = new Rect (x, y, width, height);
+			GUI.Label (rect, GUIContent.none, m_Styles[i]);
+
+			x += width;
+		}
+	}
+
+	private int[] GetTeamInfo() {
+		int[] teams = new int[m_MaxPlayers];
+		for(int i = 0; i < m_PlayerCount; i++) {
+			for(int team = 0; team < m_MaxPlayers; team++) {
+				if(m_Players[i].GetComponent<PlayerStats>().HomeSpawn == m_SpawnPoints[team].GetComponent<PlayerSpawner>()) {
+					teams[team]++;
+				}
+			}
+		}
+		return teams;
+	}
 }

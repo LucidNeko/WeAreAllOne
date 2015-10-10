@@ -3,12 +3,16 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
+	public GameObject m_Explosion;
+
 	private Renderer m_Renderer;
 
-	private Color m_Color;
+//	private Color m_Color;
 	private Rigidbody m_RigidBody;
 	private Collider m_Collider;
 	private float m_Radius;
+
+	private PlayerStats m_Shooter;
 
 	void Awake() {
 		//set gameobject to bullet so we ignore bullet/bullet collisions
@@ -26,10 +30,11 @@ public class Bullet : MonoBehaviour {
 		m_Radius = Mathf.Max (m_Collider.bounds.extents.x, m_Collider.bounds.extents.y);
 	}
 
-	public void SetColor(Color color) {
-		m_Color = color;
+	public void SetStats(PlayerStats playerStats) {
+		m_Shooter = playerStats;
+
 		Material m = m_Renderer.material;
-		m.color = m_Color;
+		m.color = m_Shooter.PlayerColor;
 		m_Renderer.material = m;
 	}
 	
@@ -49,6 +54,18 @@ public class Bullet : MonoBehaviour {
 			return; // Ignore surfaces that aren't paintable
 		}
 
+		GameObject obj = Instantiate(m_Explosion, transform.position, Quaternion.identity) as GameObject;
+		ParticleSystem[] ps = obj.GetComponentsInChildren<ParticleSystem> ();
+		foreach (ParticleSystem p in ps) {
+			p.startColor = m_Shooter.PlayerColor;
+		}
+		obj.transform.parent = transform.root;
+
+		if (collision.gameObject.tag.Equals("Player")) {
+			surface.Paint(m_Shooter, null);
+			return;
+		}
+
 		//Splat each contact point raycast will only hit the collider of collision
 		foreach (ContactPoint p in collision.contacts) {
 			//ray from bullet center to contact point
@@ -56,7 +73,7 @@ public class Bullet : MonoBehaviour {
 
 			RaycastHit info;
 			if(collision.collider.Raycast(ray, out info, m_Radius*2)) {
-				surface.Paint(m_Color, info);
+				surface.Paint(m_Shooter, info);
 			}
 		}
 
@@ -97,7 +114,7 @@ public class Bullet : MonoBehaviour {
 
 				surface = info.collider.gameObject.GetComponent<PaintableSurface>();
 				if(surface != null) {
-					surface.Paint(m_Color, info);
+					surface.Paint(m_Shooter, info);
 //					Debug.Log ("Secondary Hit - with paint");
 				} else {
 //					Debug.Log ("Secondary Hit");

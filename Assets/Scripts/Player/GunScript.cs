@@ -20,13 +20,19 @@ public class GunScript : MonoBehaviour {
 		}
 	}
 
-	public void Equip(Gun gun) {
+	public void Drop() {
 		Gun oldGun = m_GunSlot.GetComponentInChildren<Gun> ();
 		if (oldGun != null) {
+			GetComponent<PlayerStats> ().FreeMaterial(oldGun.gameObject.GetComponent<Renderer> ());
 			oldGun.Drop();
 		}
+	}
 
-		GetComponent<PlayerStats> ().SetGunRenderer (gun.gameObject.GetComponent<Renderer> ());
+	public void Equip(Gun gun) {
+		Drop ();
+
+//		GetComponent<PlayerStats> ().SetGunRenderer (gun.gameObject.GetComponent<Renderer> ());
+		GetComponent<PlayerStats> ().HijackMaterial (gun.gameObject.GetComponent<Renderer> ());
 
 		gun.transform.parent = m_GunSlot.transform;
 		gun.transform.localPosition = Vector3.zero;
