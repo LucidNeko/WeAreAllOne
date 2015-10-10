@@ -59,11 +59,13 @@ public class Bullet : MonoBehaviour {
 		foreach (ParticleSystem p in ps) {
 			p.startColor = m_Shooter.PlayerColor;
 		}
-		obj.transform.parent = transform.root;
+		obj.transform.parent = TempContainer.Instance.transform;
 
 		if (collision.gameObject.tag.Equals("Player")) {
-			surface.Paint(m_Shooter, null);
-			return;
+			if(collision.gameObject.GetComponent<PlayerStats>().PlayerColor != m_Shooter.PlayerColor) {
+				surface.Paint(m_Shooter, null);
+				return;
+			}
 		}
 
 		//Splat each contact point raycast will only hit the collider of collision
@@ -77,52 +79,52 @@ public class Bullet : MonoBehaviour {
 			}
 		}
 
-		//extra splats on all objects
-		Vector3[] dirs = {
-
-			(transform.forward + transform.right*0.5f).normalized,
-			(transform.forward - transform.right*0.5f).normalized, //left
-			(transform.forward + transform.up*0.5f).normalized,
-			(transform.forward - transform.up*0.5f).normalized, //down
-
-			(transform.forward + transform.right*0.5f + transform.up*0.5f).normalized,
-			(transform.forward + transform.right*0.5f - transform.up*0.5f).normalized,
-			(transform.forward - transform.right*0.5f + transform.up*0.5f).normalized,
-			(transform.forward - transform.right*0.5f - transform.up*0.5f).normalized,
-
-			(transform.forward + transform.right*1f).normalized,
-			(transform.forward - transform.right*1f).normalized, //left
-			(transform.forward + transform.up*1f).normalized,
-			(transform.forward - transform.up*1f).normalized, //down
-			
-			(transform.forward + transform.right*1f + transform.up*1f).normalized,
-			(transform.forward + transform.right*1f - transform.up*1f).normalized,
-			(transform.forward - transform.right*1f + transform.up*1f).normalized,
-			(transform.forward - transform.right*1f - transform.up*1f).normalized,
-		};
-
-		foreach (Vector3 dir in dirs) {
-			//ray from bullet center to contact point
-			Ray ray = new Ray(transform.position - transform.forward * m_Radius*5, dir);
-
-			Debug.DrawRay(ray.origin, ray.direction, Color.green, 2);
-
-			RaycastHit info;
-			if(Physics.Raycast(ray, out info, 1)) {
-
-				Debug.DrawRay(info.point, info.normal, Color.blue, 2);
-
-				surface = info.collider.gameObject.GetComponent<PaintableSurface>();
-				if(surface != null) {
-					surface.Paint(m_Shooter, info);
-//					Debug.Log ("Secondary Hit - with paint");
-				} else {
-//					Debug.Log ("Secondary Hit");
-				}
-			} else {
-//				Debug.Log ("No Secondary Hit");
-			}
-		}
+//		//extra splats on all objects
+//		Vector3[] dirs = {
+//
+//			(transform.forward + transform.right*0.5f).normalized,
+//			(transform.forward - transform.right*0.5f).normalized, //left
+//			(transform.forward + transform.up*0.5f).normalized,
+//			(transform.forward - transform.up*0.5f).normalized, //down
+//
+//			(transform.forward + transform.right*0.5f + transform.up*0.5f).normalized,
+//			(transform.forward + transform.right*0.5f - transform.up*0.5f).normalized,
+//			(transform.forward - transform.right*0.5f + transform.up*0.5f).normalized,
+//			(transform.forward - transform.right*0.5f - transform.up*0.5f).normalized,
+//
+//			(transform.forward + transform.right*1f).normalized,
+//			(transform.forward - transform.right*1f).normalized, //left
+//			(transform.forward + transform.up*1f).normalized,
+//			(transform.forward - transform.up*1f).normalized, //down
+//			
+//			(transform.forward + transform.right*1f + transform.up*1f).normalized,
+//			(transform.forward + transform.right*1f - transform.up*1f).normalized,
+//			(transform.forward - transform.right*1f + transform.up*1f).normalized,
+//			(transform.forward - transform.right*1f - transform.up*1f).normalized,
+//		};
+//
+//		foreach (Vector3 dir in dirs) {
+//			//ray from bullet center to contact point
+//			Ray ray = new Ray(transform.position - transform.forward * m_Radius*5, dir);
+//
+//			Debug.DrawRay(ray.origin, ray.direction, Color.green, 2);
+//
+//			RaycastHit info;
+//			if(Physics.Raycast(ray, out info, 1)) {
+//
+//				Debug.DrawRay(info.point, info.normal, Color.blue, 2);
+//
+//				surface = info.collider.gameObject.GetComponent<PaintableSurface>();
+//				if(surface != null) {
+//					surface.Paint(m_Shooter, info);
+////					Debug.Log ("Secondary Hit - with paint");
+//				} else {
+////					Debug.Log ("Secondary Hit");
+//				}
+//			} else {
+////				Debug.Log ("No Secondary Hit");
+//			}
+//		}
 
 		Destroy (gameObject);
 	}

@@ -3,6 +3,8 @@ using System.Collections;
 
 public abstract class Gun : MonoBehaviour, IEquippable
 {
+	public Vector3 m_Offset;
+
 	private bool m_TriggerDown = false;
 
 	public bool IsTriggerDown() {
@@ -38,9 +40,13 @@ public abstract class Gun : MonoBehaviour, IEquippable
 		}
 	}
 
-	public abstract void Equip(GameObject player);
+	//On equip, after gun has been put in player hierarchy
+	public abstract void OnEquip();
 
-	public abstract void Drop();
+	//On drop after gun has been removed from player hierarchy
+	public abstract void OnDrop();
+
+	public abstract string GetName ();
 
 }
 

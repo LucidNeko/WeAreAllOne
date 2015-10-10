@@ -23,19 +23,35 @@ public class GunScript : MonoBehaviour {
 	public void Drop() {
 		Gun oldGun = m_GunSlot.GetComponentInChildren<Gun> ();
 		if (oldGun != null) {
-			GetComponent<PlayerStats> ().FreeMaterial(oldGun.gameObject.GetComponent<Renderer> ());
-			oldGun.Drop();
+			PlayerStats stats = GetComponent<PlayerStats> ();
+			Renderer[] renderers = oldGun.GetComponentsInChildren<Renderer>();
+			foreach(Renderer renderer in renderers) {
+				stats.FreeMaterial(renderer);
+			}
+			oldGun.transform.parent = null;
+			oldGun.OnDrop();
+		}
+	}
+
+	public void Equip(IEquippable item) {
+		if (item is Gun) {
+			Equip ((Gun)item);
 		}
 	}
 
 	public void Equip(Gun gun) {
 		Drop ();
 
-//		GetComponent<PlayerStats> ().SetGunRenderer (gun.gameObject.GetComponent<Renderer> ());
-		GetComponent<PlayerStats> ().HijackMaterial (gun.gameObject.GetComponent<Renderer> ());
+		PlayerStats stats = GetComponent<PlayerStats> ();
+		Renderer[] renderers = gun.GetComponentsInChildren<Renderer>();
+		foreach (Renderer renderer in renderers) {
+			stats.HijackMaterial(renderer);
+		}
 
 		gun.transform.parent = m_GunSlot.transform;
-		gun.transform.localPosition = Vector3.zero;
+		gun.transform.localPosition = gun.m_Offset;
 		gun.transform.localRotation = Quaternion.identity;
+
+		gun.OnEquip ();
 	}
 }

@@ -24,6 +24,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 466992}
   - 95: {fileID: 9512672}
+  - 114: {fileID: 11476992}
   m_Layer: 0
   m_Name: Minigun
   m_TagString: Untagged
@@ -252,13 +253,53 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11476992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcdae9213fcce3419bd77628f2509fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: .0199999996, y: 0, z: .239999995}
+  m_Bullet: {fileID: 102352, guid: a80192067c70581469a8e94428b02af8, type: 2}
+  m_Barrel: {fileID: 467610}
+  m_BarrelEnd: {fileID: 487638}
+  m_MaxShots: 30
+  m_WarmupDelay: .699999988
+  m_BulletSpeed: 50
+  m_ShotDelay: .0199999996
+  m_CooldownDuration: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Bullet
+      value: 
+      objectReference: {fileID: 102352, guid: a80192067c70581469a8e94428b02af8, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Barrel
+      value: 
+      objectReference: {fileID: 467610}
+    - target: {fileID: 0}
+      propertyPath: m_BarrelEnd
+      value: 
+      objectReference: {fileID: 487638}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.x
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.z
+      value: .239999995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 130216}
