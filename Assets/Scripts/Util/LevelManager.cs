@@ -45,15 +45,25 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 	void Start() {
 		string[] joysticks = Input.GetJoystickNames ();
 
-		if (joysticks.Length == 0) {
-			CreatePlayer<KeyboardControl> ();
-			CreatePlayer<KeyboardControl> ();
-		} else {
-			for(int i = 0; i < joysticks.Length; i++) {
-				GameObject player = CreatePlayer<PS4Control>();
-				m_Players[i].GetComponent<PS4Control>().m_Player = i;
-			}
+		for(int i = 0; i < joysticks.Length; i++) {
+			GameObject player = CreatePlayer<PS4Control>();
+			m_Players[i].GetComponent<PS4Control>().m_Player = i;
 		}
+
+		for (int i = m_PlayerCount; i < m_MaxPlayers; i++) {
+			CreatePlayer<KeyboardControl> ();
+		}
+
+
+//		if (joysticks.Length == 0) {
+//			CreatePlayer<KeyboardControl> ();
+//			CreatePlayer<KeyboardControl> ();
+//		} else {
+//			for(int i = 0; i < joysticks.Length; i++) {
+//				GameObject player = CreatePlayer<PS4Control>();
+//				m_Players[i].GetComponent<PS4Control>().m_Player = i;
+//			}
+//		}
 	}
 
 	void Update() {

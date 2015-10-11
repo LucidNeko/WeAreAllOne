@@ -5,7 +5,7 @@ public class FPSCameraScript : MonoBehaviour {
 
 	public Texture2D m_Crosshair;
 	public bool m_InvertX = false;
-	public bool m_InvertY = true;
+	public bool m_InvertY = false;
 	public float m_SpeedX = 6f;
 	public float m_SpeedY = 6f;
 
@@ -15,6 +15,11 @@ public class FPSCameraScript : MonoBehaviour {
 	void Start() {
 		m_Control = GetComponentInParent<IControl> ();
 		m_Camera = GetComponent<Camera> ();
+
+//		//invert for keyboard
+//		if (transform.root.gameObject.GetComponent<KeyboardControl> () != null) {
+//			m_InvertY = true;
+//		}
 	}
 
 	void Update() {

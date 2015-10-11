@@ -31,7 +31,13 @@ public class PS4Control : MonoBehaviour, IControl
 	
 	public float GetVerticalAxis2 ()
 	{
+#if UNITY_EDITOR_WIN
+		return Input.GetAxis("PS4 Win Vertical2 P" + m_Player);
+#elif UNITY_STANDALONE_WIN
+		return Input.GetAxis("PS4 Win Vertical2 P" + m_Player);
+#else
 		return Input.GetAxis("PS4 Vertical2 P" + m_Player);
+#endif
 	}
 	
 	public bool GetJump ()
