@@ -3,6 +3,6 @@ using System.Collections;
 
 public interface PaintableSurface {
 
-	bool Paint (Color color, Collision info);
-	bool Paint (Color color, RaycastHit info);
+	bool Paint (PlayerStats shooter, Collision info);
+	bool Paint (PlayerStats shooter, RaycastHit info);
 }

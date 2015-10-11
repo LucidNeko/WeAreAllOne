@@ -310,6 +310,22 @@ InputManager:
     axis: 3
     joyNum: 1
   - serializedVersion: 3
+    m_Name: PS4 Win Vertical2 P0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: .189999998
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: PS4 Vertical2 P1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -324,6 +340,22 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: PS4 Win Vertical2 P1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: .189999998
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
     joyNum: 2
   - serializedVersion: 3
     m_Name: PS4 Vertical2 P2
@@ -342,6 +374,22 @@ InputManager:
     axis: 3
     joyNum: 3
   - serializedVersion: 3
+    m_Name: PS4 Win Vertical2 P2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: .189999998
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 3
+  - serializedVersion: 3
     m_Name: PS4 Vertical2 P3
     descriptiveName: 
     descriptiveNegativeName: 
@@ -356,6 +404,22 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: PS4 Win Vertical2 P3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: .189999998
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
     joyNum: 4
   - serializedVersion: 3
     m_Name: PS4 Shoot P0

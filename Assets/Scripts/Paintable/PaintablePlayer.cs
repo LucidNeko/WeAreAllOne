@@ -9,13 +9,15 @@ public class PaintablePlayer : MonoBehaviour, PaintableSurface {
 		m_PlayerStats = GetComponent<PlayerStats> ();
 	}
 
-	public bool Paint (Color color, Collision info) {
-		m_PlayerStats.PlayerColor = color;
+	public bool Paint (PlayerStats shooter, Collision info) {
+//		m_PlayerStats.PlayerColor = shooter.PlayerColor;
+		shooter.HomeSpawn.Spawn (gameObject);
 		return true;
 	}
 
-	public bool Paint (Color color, RaycastHit info) {
-		m_PlayerStats.PlayerColor = color;
+	public bool Paint (PlayerStats shooter, RaycastHit info) {
+//		m_PlayerStats.PlayerColor = shooter.PlayerColor;
+		shooter.HomeSpawn.Spawn (gameObject);
 		return true;
 	}
 

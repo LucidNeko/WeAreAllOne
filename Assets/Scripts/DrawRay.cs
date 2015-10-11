@@ -41,7 +41,7 @@ public class DrawRay : MonoBehaviour {
 			Debug.Log ("hit: " + info.collider.gameObject.name);
 			PaintableSurface ps = info.collider.gameObject.GetComponent<PaintableSurface>();
 			if(ps != null) {
-				ps.Paint(m_PlayerStats.PlayerColor, info);
+				ps.Paint(m_PlayerStats, info);
 			}
 			m_LineRenderer.SetPosition (1, info.point);
 		} else {

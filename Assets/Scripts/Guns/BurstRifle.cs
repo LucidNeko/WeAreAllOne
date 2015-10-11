@@ -9,8 +9,6 @@ public class BurstRifle : Gun {
 
 	public Transform m_BarrelEnd;
 
-	private GameObject m_Bullets;
-
 	private PlayerStats m_PlayerStats;
 	private Camera m_Camera;
 
@@ -19,24 +17,14 @@ public class BurstRifle : Gun {
 	private int m_ShotsFired = 0;
 
 	private bool m_Equipped = false;
-	
-	// Use this for initialization
-	void Start () {
-//		m_PlayerStats = GetComponentInParent<PlayerStats> ();
-//		m_Camera = GetComponentInParent<Camera> ();
-//		Equip (transform.root.gameObject);
-	}
 
-	public override void Equip(GameObject player) {
-		player.GetComponentInParent<GunScript> ().Equip (this);
-
-		m_PlayerStats = player.GetComponentInChildren<PlayerStats> ();
-		m_Camera = player.GetComponentInChildren<Camera> ();
+	public override void OnEquip() {
+		m_PlayerStats = transform.root.gameObject.GetComponentInChildren<PlayerStats> ();
+		m_Camera = transform.root.gameObject.GetComponentInChildren<Camera> ();
 		m_Equipped = true;
 	}
 
-	public override void Drop() {
-		transform.parent = null;
+	public override void OnDrop() {
 		TriggerState (false);
 		m_PlayerStats = null;
 		m_Camera = null;
@@ -56,15 +44,6 @@ public class BurstRifle : Gun {
 		}
 	}
 
-	void OnEnable() {
-		//Make container to store bullets
-		m_Bullets = new GameObject ("Bullet Container");
-	}
-
-	void OnDisable() {
-		Destroy (m_Bullets);
-	}
-
 	protected override void TriggerReleased() {
 		m_ShotsFired = 0;
 	}
@@ -76,12 +55,17 @@ public class BurstRifle : Gun {
 	private IEnumerator FireRoutine() {
 		m_CanShoot = false;
 		GameObject bullet = Instantiate (m_Bullet, m_BarrelEnd.position, m_BarrelEnd.rotation) as GameObject;
-		bullet.transform.parent = m_Bullets.transform; //put in container
-		bullet.GetComponent<Bullet> ().SetColor (m_PlayerStats.PlayerColor);
+		bullet.transform.parent = TempContainer.Instance.transform; //put in container
+
+		bullet.GetComponent<Bullet> ().SetStats (m_PlayerStats);
 		
 		bullet.GetComponent<Rigidbody> ().AddForce (GetBulletTrajectory (m_Camera, m_BarrelEnd) * m_BulletSpeed, ForceMode.Impulse);
 		yield return new WaitForSeconds(0.05f);
 		m_ShotsFired++;
 		m_CanShoot = true;
+	}
+
+	public override string GetName() {
+		return "Burst Rifle";
 	}
 }
