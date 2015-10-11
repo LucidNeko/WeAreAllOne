@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour {
 	private static Color HIJACK_COLOR = new Color(0, 0, 0, 1);
 
 	public Renderer m_PlayerRenderer;
+	public Renderer m_HeadRenderer;
 	public Renderer m_GunRenderer;
 
 	private Material m_Material;
@@ -32,6 +33,7 @@ public class PlayerStats : MonoBehaviour {
 
 	void Start() {
 		HijackMaterial (m_PlayerRenderer);
+		HijackMaterial (m_HeadRenderer);
 	}
 
 	public void HijackMaterial(Renderer renderer) {
