@@ -5,11 +5,20 @@ public class PlayerSpawner : MonoBehaviour
 {
 	public GameObject m_Effect;
 
+	public GameObject m_DeathEffect;
+
 	public Color m_Color;
 
 	public void Spawn(GameObject player) {
 		//drop weapon
 		player.GetComponent<GunScript> ().Drop ();
+
+		//Explode effect
+		Color explosionColor = player.GetComponent<PlayerStats> ().PlayerColor;
+		GameObject explosionffect = Instantiate(m_DeathEffect, player.transform.position, player.transform.rotation) as GameObject;
+		foreach (ParticleSystem ps in explosionffect.GetComponentsInChildren<ParticleSystem>()) {
+			ps.startColor = explosionColor;
+		}
 
 		//create spawn effect
 		GameObject effect = Instantiate(m_Effect, transform.position, transform.rotation) as GameObject;

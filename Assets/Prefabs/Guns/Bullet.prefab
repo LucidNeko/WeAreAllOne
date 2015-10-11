@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca650981b4b08b443b2b750344c72e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Explosion: {fileID: 173368, guid: 90c921fba2943e042ae76d7e432b57c5, type: 2}
+  m_Explosion: {fileID: 102772, guid: e245a288a1b78924685fa9f19d9feb5b, type: 2}
 --- !u!114 &11497112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,7 +130,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Explosion
       value: 
-      objectReference: {fileID: 173368, guid: 90c921fba2943e042ae76d7e432b57c5, type: 2}
+      objectReference: {fileID: 102772, guid: e245a288a1b78924685fa9f19d9feb5b, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Duration
       value: 20
