@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: a1231f9ff61a146dd825ea332e962fba
-timeCreated: 1444270671
+guid: 8e1ada339653d4601acfaa22e2edf13b
+timeCreated: 1444610319
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: mericaFlag
-    100002: //RootNode
-    400000: mericaFlag
-    400002: //RootNode
-    2300000: mericaFlag
-    3300000: mericaFlag
-    4300000: mericaFlag
-    6400000: mericaFlag
+    100000: //RootNode
+    100002: ISISFlag1
+    400000: //RootNode
+    400002: ISISFlag1
+    2300000: ISISFlag1
+    3300000: ISISFlag1
+    4300000: ISISFlag1
+    6400000: ISISFlag1
   materials:
     importMaterials: 1
     materialName: 0
