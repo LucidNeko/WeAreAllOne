@@ -7,24 +7,29 @@ public class Minigun : Gun {
 	public Transform m_Barrel;
 	public Transform m_BarrelEnd;
 
-	public int m_MaxShots = 30;
-	public float m_WarmupDelay = 0.7f;
+	public int m_MaxShots = 50;
 	public float m_BulletSpeed = 50f;
 	public float m_ShotDelay = 0.02f;
-	public float m_CooldownDuration = 1f;
 
 	private bool m_Equipped = false;
 
-	private bool m_IsCoolingDown = false;
 	private bool m_IsShooting = false;
-	private int m_ShotsFired = 0;
+
+	private float m_SpinSpeed = 0;
+	private float m_MaxSpinSpeed = 1000f;
+
+	private float m_Heat = 0;
+	private float m_MaxHeat = 100; //num shots
+	private float m_HeatPer = 1f;
+
+	private bool m_Overheat = false;
 
 	Camera m_Camera;
 	PlayerStats m_PlayerStats;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () { 
+		m_MaxHeat = m_MaxShots;
 	}
 	
 	// Update is called once per frame
@@ -32,29 +37,46 @@ public class Minigun : Gun {
 		if (m_Equipped) {
 			Debug.DrawRay (m_BarrelEnd.position, GetBulletTrajectory (m_Camera, m_BarrelEnd) * 100);
 			
-			if (IsTriggerDown () && !m_IsCoolingDown && !m_IsShooting && m_ShotsFired < m_MaxShots) {
-				Fire ();
+			//rotate
+			m_Barrel.Rotate(Vector3.forward, m_SpinSpeed * Time.deltaTime);
+
+			//calc spin
+			if(IsTriggerDown() && !m_Overheat) {
+				m_SpinSpeed += 10;
+			} else {
+				m_SpinSpeed -= 10;
+				m_Heat -= m_HeatPer;
+			}
+			m_SpinSpeed = Mathf.Clamp(m_SpinSpeed, 0, m_MaxSpinSpeed);
+
+			//calc heat
+			if(m_Heat > m_MaxHeat) {
+				m_Heat = m_MaxHeat;
+			} else if( m_Heat < 0 && !IsTriggerDown()) { //resets on trigger release and 0 heat
+				m_Heat = 0;
+				m_Overheat = false;
 			}
 
-			if(IsTriggerDown() && !m_IsCoolingDown && m_ShotsFired < m_MaxShots) {
-				Vector3 rot = m_Barrel.localEulerAngles;
-				rot.z += 10f;
-				m_Barrel.localEulerAngles = rot;
+			//overheat?
+			if(m_Heat == m_MaxHeat) {
+				m_Overheat = true;
+			}
+
+			//cooldown?
+			if(m_Overheat) {
+				m_Heat -= 0.5f;
+			} else {
+				//fire
+				if(IsTriggerDown() && !m_IsShooting && m_SpinSpeed == m_MaxSpinSpeed) {
+					Fire ();
+					m_Heat += m_HeatPer;
+				}
 			}
 		}
 	}
 
 	protected override void TriggerReleased() {
-		if (!m_IsCoolingDown) {
-			StartCoroutine (Cooldown ());
-		}
-	}
-
-	IEnumerator Cooldown() {
-		m_IsCoolingDown = true;
-		yield return new WaitForSeconds (m_CooldownDuration);
-		m_IsCoolingDown = false;
-		m_ShotsFired = 0;
+	
 	}
 
 	public override void OnEquip() {
@@ -86,7 +108,6 @@ public class Minigun : Gun {
 		
 		bullet.GetComponent<Rigidbody> ().AddForce (GetBulletTrajectory (m_Camera, m_BarrelEnd) * m_BulletSpeed, ForceMode.Impulse);
 
-		m_ShotsFired++;
 		yield return new WaitForSeconds (m_ShotDelay);
 		m_IsShooting = false;
 	}
