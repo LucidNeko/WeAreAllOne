@@ -45,6 +45,8 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 	void Start() {
 		string[] joysticks = Input.GetJoystickNames ();
 
+//		CreatePlayer<KeyboardControl> ().transform.position = Vector3.zero;
+
 		for(int i = 0; i < joysticks.Length; i++) {
 			GameObject player = CreatePlayer<PS4Control>();
 			m_Players[i].GetComponent<PS4Control>().m_Player = i;
