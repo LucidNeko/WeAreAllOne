@@ -56,6 +56,10 @@ public class KeyboardControl : MonoBehaviour, IControl
 		return Input.GetMouseButton (SHOOT) ? 1 : 0;
 	}
 
+	public bool GetInvertDown() {
+		return Input.GetKeyDown (KeyCode.I);
+	}
+
 	void Update() {
 		float v = GetVerticalAxis ();
 		float h = GetHorizontalAxis ();

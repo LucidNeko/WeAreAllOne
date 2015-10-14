@@ -64,6 +64,10 @@ public class PS4Control : MonoBehaviour, IControl
 		return Input.GetAxisRaw ("PS4 Shoot Trigger P" + m_Player);
 	}
 
+	public bool GetInvertDown() {
+		return Input.GetButtonDown ("PS4 Invert P" + m_Player);
+	}
+
 	void Update() {
 		float v = GetVerticalAxis ();
 		float h = GetHorizontalAxis ();

@@ -18,7 +18,7 @@ public class GunScript : MonoBehaviour {
 
 		Gun gun = m_GunSlot.GetComponentInChildren<Gun> ();
 		if (gun != null) {
-			gun.TriggerState(trigger > 0.2f ? true : false);
+			gun.TriggerState(trigger > 0 ? true : false);
 		}
 	}
 

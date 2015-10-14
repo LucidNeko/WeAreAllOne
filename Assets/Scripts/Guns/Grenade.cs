@@ -7,6 +7,8 @@ public class Grenade : MonoBehaviour {
 	public float m_FragmentSpeed = 20f;
 	public int m_NumFragments = 20;
 
+	public float m_DamageRadius = 3f;
+
 	public GameObject m_Effect;
 
 	public GameObject m_Bullet;
@@ -31,6 +33,14 @@ public class Grenade : MonoBehaviour {
 			ps.startColor = m_Stats.PlayerColor;
 		}
 
+		//Spherecast
+		Collider[] colliders = Physics.OverlapSphere (transform.position, m_DamageRadius);
+		foreach (Collider c in colliders) {
+			if(c.gameObject.tag.Equals("Player")) {
+				HandlePlayerHit(c.gameObject);
+			}
+		}
+
 		//Shrapnel
 		for (int i = 0; i < m_NumFragments; i++) {
 			GameObject bullet = Instantiate (m_Bullet, transform.position, Quaternion.identity) as GameObject;
@@ -46,5 +56,15 @@ public class Grenade : MonoBehaviour {
 
 	Vector3 GetRandomDir() {
 		return new Vector3 (Random.Range (-1f, 1f), Random.Range (-1f, 1f), Random.Range (-1f, 1f)).normalized;
+	}
+
+	void HandlePlayerHit(GameObject obj) {
+		if (obj.tag.Equals("Player")) {
+			if(obj.GetComponent<PlayerStats>().PlayerColor != m_Stats.PlayerColor) {
+				Debug.Log ("Hit player");
+				
+				obj.GetComponent<PaintableSurface>().Paint(m_Stats, null);
+			}
+		}
 	}
 }

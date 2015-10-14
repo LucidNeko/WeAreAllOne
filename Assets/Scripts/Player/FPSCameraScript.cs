@@ -27,6 +27,10 @@ public class FPSCameraScript : MonoBehaviour {
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 		}
+
+		if (m_Control.GetInvertDown ()) {
+			m_InvertY = !m_InvertY;
+		}
 	}
 	
 	// Update is called once per frame

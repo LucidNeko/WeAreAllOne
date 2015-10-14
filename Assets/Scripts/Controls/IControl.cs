@@ -18,6 +18,8 @@ public interface IControl
 	bool GetShoot();
 	bool GetShootDown();
 
+	bool GetInvertDown();
+
 	event Dash OnDash;
 }
 

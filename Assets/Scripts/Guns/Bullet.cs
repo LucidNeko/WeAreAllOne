@@ -75,8 +75,6 @@ public class Bullet : MonoBehaviour {
 	void HandlePlayerHit(GameObject obj) {
 		if (obj.tag.Equals("Player")) {
 			if(obj.GetComponent<PlayerStats>().PlayerColor != m_Shooter.PlayerColor) {
-				Debug.Log ("Hit player");
-
 				GameObject explosion = Instantiate(m_Explosion, transform.position, Quaternion.identity) as GameObject;
 				ParticleSystem[] ps = explosion.GetComponentsInChildren<ParticleSystem> ();
 				foreach (ParticleSystem p in ps) {
@@ -85,7 +83,6 @@ public class Bullet : MonoBehaviour {
 				explosion.transform.parent = TempContainer.Instance.transform;
 
 				obj.GetComponent<PaintableSurface>().Paint(m_Shooter, null);
-				return;
 
 				Destroy(gameObject);
 			}
@@ -99,20 +96,7 @@ public class Bullet : MonoBehaviour {
 			return; // Ignore surfaces that aren't paintable
 		}
 
-//		GameObject obj = Instantiate(m_Explosion, transform.position, Quaternion.identity) as GameObject;
-//		ParticleSystem[] ps = obj.GetComponentsInChildren<ParticleSystem> ();
-//		foreach (ParticleSystem p in ps) {
-//			p.startColor = m_Shooter.PlayerColor;
-//		}
-//		obj.transform.parent = TempContainer.Instance.transform;
-//
-//		if (collision.gameObject.tag.Equals("Player")) {
-//			if(collision.gameObject.GetComponent<PlayerStats>().PlayerColor != m_Shooter.PlayerColor) {
-//				Debug.Log ("Hit player");
-//				surface.Paint(m_Shooter, null);
-//				return;
-//			}
-//		}
+		HandlePlayerHit (collision.gameObject);
 
 		//Splat each contact point raycast will only hit the collider of collision
 		foreach (ContactPoint p in collision.contacts) {

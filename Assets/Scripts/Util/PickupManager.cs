@@ -44,15 +44,39 @@ public class PickupManager : MonoBehaviour
 
 	}
 
+	public void CreatePickupExact(GameObject item) {
+		IEquippable e = item.GetComponent<IEquippable> ();
+		
+		if (e == null) {
+			return;
+		}
+		
+		GameObject container = Instantiate (m_PickupOrbPrefab, item.transform.position, item.transform.rotation) as GameObject;
+		container.transform.parent = m_Pickups.transform;
+		item.transform.parent = container.transform;
+		item.transform.localPosition = Vector3.zero;
+		item.transform.localRotation = Quaternion.identity;
+		
+		container.GetComponent<PickupOrb> ().m_Object = item;
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
 		m_Pickups = new GameObject ("Pickups");
 
-		for (int i = 0; i < 20; i++) {
-			GameObject gun = Instantiate (m_Guns [Random.Range (0, m_Guns.Length)], new Vector3(Random.Range(-15, 15), 1, Random.Range(-15, 15)), Quaternion.identity) as GameObject;
-			CreatePickup (gun);
+		for (int i = 0; i < m_Guns.Length && i < m_PickupLocations.Length; i++) {
+			Transform t = m_PickupLocations[i];
+			for(int child = 0; child < t.childCount; child++) {
+				GameObject gun = Instantiate (m_Guns [i], t.GetChild(child).position, Quaternion.identity) as GameObject;
+				CreatePickupExact (gun);
+			}
 		}
+
+//		for (int i = 0; i < 20; i++) {
+//			GameObject gun = Instantiate (m_Guns [Random.Range (0, m_Guns.Length)], new Vector3(Random.Range(-15, 15), 1, Random.Range(-15, 15)), Quaternion.identity) as GameObject;
+//			CreatePickup (gun);
+//		}
 	}
 }
 

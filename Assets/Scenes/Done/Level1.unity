@@ -87449,6 +87449,21 @@ MonoBehaviour:
   m_TextureResolution: 512
   m_Splat: {fileID: 2800000, guid: e9811a341fbefeb4b8582e5c864d28e2, type: 3}
   m_Transparant: 0
+--- !u!1 &1697465356 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 190314, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
+  m_PrefabInternal: {fileID: 1430690283}
+--- !u!114 &1697465359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1697465356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0fa0beb72f49f4a85edba5a414d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1697646048
 Prefab:
   m_ObjectHideFlags: 0
