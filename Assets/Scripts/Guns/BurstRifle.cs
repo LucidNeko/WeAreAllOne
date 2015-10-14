@@ -18,6 +18,12 @@ public class BurstRifle : Gun {
 
 	private bool m_Equipped = false;
 
+	private AudioSource m_FireSound;
+
+	void Start() {
+		m_FireSound = GetComponent<AudioSource> ();
+	}
+
 	public override void OnEquip() {
 		m_PlayerStats = transform.root.gameObject.GetComponentInChildren<PlayerStats> ();
 		m_Camera = transform.root.gameObject.GetComponentInChildren<Camera> ();
@@ -53,6 +59,8 @@ public class BurstRifle : Gun {
 	}
 
 	private IEnumerator FireRoutine() {
+		m_FireSound.Play ();
+
 		m_CanShoot = false;
 		GameObject bullet = Instantiate (m_Bullet, m_BarrelEnd.position, m_BarrelEnd.rotation) as GameObject;
 		bullet.transform.parent = TempContainer.Instance.transform; //put in container

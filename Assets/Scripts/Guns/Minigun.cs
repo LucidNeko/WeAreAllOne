@@ -27,9 +27,12 @@ public class Minigun : Gun {
 	Camera m_Camera;
 	PlayerStats m_PlayerStats;
 
+	private AudioSource m_FireSound;
+
 	// Use this for initialization
 	void Start () { 
 		m_MaxHeat = m_MaxShots;
+		m_FireSound = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -99,6 +102,8 @@ public class Minigun : Gun {
 	}
 
 	private IEnumerator FireRoutine() {
+		m_FireSound.Play ();
+
 		m_IsShooting = true;
 
 		GameObject bullet = Instantiate (m_Bullet, m_BarrelEnd.position, m_BarrelEnd.rotation) as GameObject;
