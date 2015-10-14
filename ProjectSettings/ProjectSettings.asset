@@ -10,14 +10,9 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-<<<<<<< HEAD
-  productName: Game Pitch
-=======
   productName: WeAreAllOne
-  cloudProjectId: 
->>>>>>> origin/master
   defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
+  cursorHotspot: {x: 6.16407384e-37, y: 1.40129846e-45}
   m_ShowUnitySplashScreen: 1
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -82,12 +77,8 @@ PlayerSettings:
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
-<<<<<<< HEAD
   virtualRealitySupported: 0
-  productGUID: ab46b4cd9c2fd64418179946811b18be
-=======
-  productGUID: 3cec814af5e184b8a89b72bfc0c72ded
->>>>>>> origin/master
+  productGUID: 629eee479d56344008306c7797a5a717
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
@@ -123,7 +114,7 @@ PlayerSettings:
   iOSLaunchScreenLandscape: {fileID: 0}
   iOSLaunchScreenBackgroundColor:
     serializedVersion: 2
-    rgba: 0
+    rgba: 1
   iOSLaunchScreenFillPct: 100
   iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 
@@ -205,12 +196,8 @@ PlayerSettings:
   ps4ApplicationParam2: 0
   ps4ApplicationParam3: 0
   ps4ApplicationParam4: 0
-<<<<<<< HEAD
   ps4GarlicHeapSize: 2048
-  ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
-=======
-  ps4Passcode: IKtMYn2mERoTAz8GFdyo3lQyAx0I7XIa
->>>>>>> origin/master
+  ps4Passcode: ynI1MguokYDeWl5noesnB4mh19PM6Dph
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -234,7 +221,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: qmJM3d631emiGcTvaGwBO6o9JLqrJdDp
+  psp2PackagePassword: 2Nh722AggBfUKJEdmm09Z1uFII2PNfTd
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -388,28 +375,27 @@ PlayerSettings:
   - iOS::ScriptingBackend
   WebGL::ScriptingBackend: 1
   WebGL::audioCompressionFormat: 4
-  WebGL::exceptionSupport: 0
+  WebGL::exceptionSupport: 1
   WebGL::memorySize: 256
   iOS::Architecture: 2
-  iOS::ScriptingBackend: 0
+  iOS::ScriptingBackend: 1
   boolPropertyNames:
+  - WebGL::analyzeBuildSize
   - WebGL::dataCaching
+  - WebGL::useEmbeddedResources
   - XboxOne::enus
+  WebGL::analyzeBuildSize: 0
   WebGL::dataCaching: 0
+  WebGL::useEmbeddedResources: 0
   XboxOne::enus: 1
   stringPropertyNames:
   - WebGL::emscriptenArgs
   - WebGL::template
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
-<<<<<<< HEAD
-  additionalIl2CppArgs::additionalIl2CppArgs: 
   firstStreamedSceneWithResources: 0
   cloudProjectId: 
   projectId: 
   projectName: 
   organizationId: 
   cloudEnabled: 0
-=======
-  firstStreamedLevelWithResources: 0
->>>>>>> origin/master
