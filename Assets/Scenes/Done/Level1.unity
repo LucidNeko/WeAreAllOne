@@ -44,7 +44,7 @@ LevelGameManager:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -68,7 +68,8 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-  m_LightmapSnapshot: {fileID: 0}
+  m_LightmapSnapshot: {fileID: 112000000, guid: a2210ab7f0a3b4c358225153ffbb4810,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
 NavMeshSettings:
@@ -73807,7 +73808,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477620, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.88599992
+      value: -.238999993
       objectReference: {fileID: 0}
     - target: {fileID: 477620, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -73815,15 +73816,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447324, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -33.9959984
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 447324, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.38899994
+      value: -.209999993
       objectReference: {fileID: 0}
     - target: {fileID: 447324, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -42.4280014
+      value: -42.4300003
       objectReference: {fileID: 0}
     - target: {fileID: 486784, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -73831,7 +73832,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486784, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.93200004
+      value: -.243000001
       objectReference: {fileID: 0}
     - target: {fileID: 486784, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -73843,11 +73844,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432884, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.81200004
+      value: -.170000002
       objectReference: {fileID: 0}
     - target: {fileID: 432884, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -33.6580009
+      value: -33.6599998
       objectReference: {fileID: 0}
     - target: {fileID: 477620, guid: bd07e417c6ef34131a3f67383be200f4, type: 2}
       propertyPath: m_LocalRotation.y
