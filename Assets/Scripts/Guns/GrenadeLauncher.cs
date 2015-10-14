@@ -16,6 +16,12 @@ public class GrenadeLauncher : Gun
 	Camera m_Camera;
 	PlayerStats m_PlayerStats;
 
+	private AudioSource m_FireSound;
+	
+	void Start() {
+		m_FireSound = GetComponent<AudioSource> ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (m_Equipped) {
@@ -47,6 +53,8 @@ public class GrenadeLauncher : Gun
 	}
 	
 	private IEnumerator FireRoutine() {
+		m_FireSound.Play ();
+
 		m_IsShooting = true;
 		
 		Vector3 dir = GetBulletTrajectory (m_Camera, m_BarrelEnd);

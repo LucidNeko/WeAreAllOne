@@ -12,6 +12,12 @@ public class Pistol : Gun {
 	
 	Camera m_Camera;
 	PlayerStats m_PlayerStats;
+
+	private AudioSource m_FireSound;
+
+	void Start() {
+		m_FireSound = GetComponent<AudioSource> ();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,7 +41,9 @@ public class Pistol : Gun {
 		PickupManager.Instance.CreatePickup (gameObject);
 	}
 
-	protected override void TriggerPressed() { 
+	protected override void TriggerPressed() {
+		m_FireSound.Play ();
+
 		Vector3 dir = GetBulletTrajectory (m_Camera, m_BarrelEnd);
 		
 		GameObject bullet = Instantiate (m_Bullet, m_BarrelEnd.position, m_BarrelEnd.rotation) as GameObject;
