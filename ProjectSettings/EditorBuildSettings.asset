@@ -9,3 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
   - enabled: 1
     path: Assets/Scenes/Done/Level1.unity
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+  - enabled: 0
+    path: Assets/Scenes/Level 3 screen shot.unity
+  - enabled: 0
+    path: Assets/Scenes/Level1screenshot.unity
