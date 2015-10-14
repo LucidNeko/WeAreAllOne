@@ -14,9 +14,11 @@ public class GunScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		float trigger = m_Control.GetShootTrigger ();
+
 		Gun gun = m_GunSlot.GetComponentInChildren<Gun> ();
 		if (gun != null) {
-			gun.TriggerState(m_Control.GetShoot());
+			gun.TriggerState(trigger > 0.2f ? true : false);
 		}
 	}
 

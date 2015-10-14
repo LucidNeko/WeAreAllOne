@@ -60,6 +60,10 @@ public class PS4Control : MonoBehaviour, IControl
 		return Input.GetButtonDown ("PS4 Shoot P" + m_Player);
 	}
 
+	public float GetShootTrigger () {
+		return Input.GetAxisRaw ("PS4 Shoot Trigger P" + m_Player);
+	}
+
 	void Update() {
 		float v = GetVerticalAxis ();
 		float h = GetHorizontalAxis ();

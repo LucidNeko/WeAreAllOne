@@ -248,9 +248,9 @@ MonoBehaviour:
   m_Offset: {x: 0, y: .0299999993, z: -.370000005}
   m_Bullet: {fileID: 102352, guid: a80192067c70581469a8e94428b02af8, type: 2}
   m_BarrelEnd: {fileID: 471298}
-  m_Shots: 10
+  m_Shots: 8
   m_BulletSpeed: 50
-  m_ShotDelay: .200000003
+  m_ShotDelay: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

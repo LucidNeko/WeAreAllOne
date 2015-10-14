@@ -11,6 +11,8 @@ public class Minigun : Gun {
 	public float m_BulletSpeed = 50f;
 	public float m_ShotDelay = 0.02f;
 
+	public float m_SpinupSpeed = 50f;
+
 	private bool m_Equipped = false;
 
 	private bool m_IsShooting = false;
@@ -45,9 +47,9 @@ public class Minigun : Gun {
 
 			//calc spin
 			if(IsTriggerDown() && !m_Overheat) {
-				m_SpinSpeed += 10;
+				m_SpinSpeed += m_SpinupSpeed;
 			} else {
-				m_SpinSpeed -= 10;
+				m_SpinSpeed -= m_SpinupSpeed;
 				m_Heat -= m_HeatPer;
 			}
 			m_SpinSpeed = Mathf.Clamp(m_SpinSpeed, 0, m_MaxSpinSpeed);

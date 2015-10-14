@@ -338,9 +338,10 @@ MonoBehaviour:
   m_Bullet: {fileID: 102352, guid: a80192067c70581469a8e94428b02af8, type: 2}
   m_Barrel: {fileID: 467610}
   m_BarrelEnd: {fileID: 487638}
-  m_MaxShots: 30
+  m_MaxShots: 40
   m_BulletSpeed: 50
   m_ShotDelay: .0199999996
+  m_SpinupSpeed: 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

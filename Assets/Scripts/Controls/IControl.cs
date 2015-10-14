@@ -10,6 +10,8 @@ public interface IControl
 	float GetHorizontalAxis2 ();
 	float GetVerticalAxis2 ();
 
+	float GetShootTrigger ();
+
 	bool GetJump();
 	bool GetJumpDown();
 

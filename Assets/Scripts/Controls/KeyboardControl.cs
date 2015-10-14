@@ -52,6 +52,10 @@ public class KeyboardControl : MonoBehaviour, IControl
 		return Input.GetMouseButtonDown (SHOOT);
 	}
 
+	public float GetShootTrigger () {
+		return Input.GetMouseButton (SHOOT) ? 1 : 0;
+	}
+
 	void Update() {
 		float v = GetVerticalAxis ();
 		float h = GetHorizontalAxis ();
