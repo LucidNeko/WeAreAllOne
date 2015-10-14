@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour, ILevelManager {
 
@@ -19,6 +20,8 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 	private GameObject[] m_Players = new GameObject[m_MaxPlayers];
 
 	private int m_NumControllersConnected = 0;
+
+	private bool m_Respawning = false;
 
 	void Awake() {
 		if (Instance != null && Instance != this) {
@@ -66,10 +69,34 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 //				m_Players[i].GetComponent<PS4Control>().m_Player = i;
 //			}
 //		}
+
+
 	}
 
 	void Update() {
 		//watch for new controllers
+
+		if (!m_Respawning) {
+			int[] teams = GetTeamInfo ();
+			for (int i = 0; i < teams.Length; i++) {
+				if (teams [i] == 4) {
+					StartCoroutine (Respawn ());
+				}
+			}
+		}
+	}
+
+	IEnumerator Respawn() {
+		m_Respawning = true;
+		yield return new WaitForSeconds (5);
+		System.Random rnd = new System.Random();
+		int[] numbers = Enumerable.Range(0, 4).OrderBy(r => rnd.Next()).ToArray();
+
+		for(int i = 0; i < numbers.Length; i++) {
+			m_SpawnPoints[numbers[i]].GetComponent<PlayerSpawner>().Spawn(m_Players[i]);
+		}
+
+		m_Respawning = false;
 	}
 
 	public GameObject CreatePlayer<T>() where T : Component, IControl {

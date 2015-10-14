@@ -45,7 +45,7 @@ public class WalkieTalkie : Gun {
 	}
 
 	protected override void TriggerPressed() {
-		m_FireSound.Play ();
+//		m_FireSound.Play ();
 
 		GameObject target = GetTargetGameObject(m_Camera, m_BarrelEnd);
 
@@ -53,11 +53,20 @@ public class WalkieTalkie : Gun {
 			return;
 		}
 
-		GameObject plane = GameObject.FindGameObjectWithTag ("Jet Suicide") as GameObject;
+//		GameObject plane = GameObject.FindGameObjectWithTag ("Jet Suicide") as GameObject;
+		GameObject[] planes = GameObject.FindGameObjectsWithTag ("Jet Suicide");
 
-		if (plane == null) {
+
+
+//		if (plane == null) {
+//			return;
+//		}
+
+		if (planes.Length == 0) {
 			return;
 		}
+
+		GameObject plane = planes [Random.Range (0, planes.Length)];
 
 		SuicideBomb script = plane.GetComponent<SuicideBomb> ();
 

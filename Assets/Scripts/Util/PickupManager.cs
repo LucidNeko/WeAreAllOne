@@ -73,10 +73,10 @@ public class PickupManager : MonoBehaviour
 			}
 		}
 
-//		for (int i = 0; i < 20; i++) {
-//			GameObject gun = Instantiate (m_Guns [Random.Range (0, m_Guns.Length)], new Vector3(Random.Range(-15, 15), 1, Random.Range(-15, 15)), Quaternion.identity) as GameObject;
-//			CreatePickup (gun);
-//		}
+		for (int i = 0; i < 20; i++) {
+			GameObject gun = Instantiate (m_Guns [Random.Range (0, m_Guns.Length)], new Vector3(Random.Range(-20, 20), 1, Random.Range(-20, 20)), Quaternion.identity) as GameObject;
+			CreatePickup (gun);
+		}
 	}
 }
 
