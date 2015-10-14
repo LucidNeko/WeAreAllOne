@@ -40,6 +40,19 @@ public abstract class Gun : MonoBehaviour, IEquippable
 		}
 	}
 
+	protected GameObject GetTargetGameObject(Camera camera, Transform barrelEnd) {
+		Vector2 center = camera.pixelRect.center;
+		Ray ray = camera.ScreenPointToRay (new Vector3 (center.x, center.y));
+		
+		RaycastHit info;
+		if (Physics.Raycast (ray, out info)) {
+			//			Debug.Log ("hit: " + info.collider.gameObject.name);
+			return info.collider.gameObject;
+		} else {
+			return null;
+		}
+	}
+
 	//On equip, after gun has been put in player hierarchy
 	public abstract void OnEquip();
 

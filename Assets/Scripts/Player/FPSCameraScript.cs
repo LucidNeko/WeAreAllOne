@@ -16,10 +16,9 @@ public class FPSCameraScript : MonoBehaviour {
 		m_Control = GetComponentInParent<IControl> ();
 		m_Camera = GetComponent<Camera> ();
 
-//		//invert for keyboard
-//		if (transform.root.gameObject.GetComponent<KeyboardControl> () != null) {
-//			m_InvertY = true;
-//		}
+		//initially grab the mouse
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 
 	void Update() {

@@ -11,6 +11,7 @@ TagManager:
   - Targetable
   - Camera
   - Bullet
+  - Jet Suicide
   layers:
   - Default
   - TransparentFX

@@ -19,12 +19,14 @@ public class PlayerSpawner : MonoBehaviour
 		foreach (ParticleSystem ps in explosionffect.GetComponentsInChildren<ParticleSystem>()) {
 			ps.startColor = explosionColor;
 		}
+		explosionffect.transform.parent = TempContainer.Instance.transform;
 
 		//create spawn effect
 		GameObject effect = Instantiate(m_Effect, transform.position, transform.rotation) as GameObject;
 		foreach (ParticleSystem ps in effect.GetComponentsInChildren<ParticleSystem>()) {
 			ps.startColor = m_Color;
 		}
+		effect.transform.parent = TempContainer.Instance.transform;
 
 		//move player
 		player.transform.position = transform.position;
