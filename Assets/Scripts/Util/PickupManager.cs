@@ -11,6 +11,7 @@ public class PickupManager : MonoBehaviour
 	public GameObject m_PickupOrbPrefab;
 
 	public GameObject[] m_Guns;
+	public Transform[] m_PickupLocations;
 
 	private GameObject m_Pickups;
 

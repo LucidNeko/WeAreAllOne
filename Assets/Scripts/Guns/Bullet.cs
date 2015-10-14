@@ -47,6 +47,51 @@ public class Bullet : MonoBehaviour {
 		}
 	}
 
+//	void FixedUpdate () {
+//		RaycastHit info;
+//		Ray ray = new Ray (transform.position, m_RigidBody.velocity.normalized);
+//		Debug.DrawRay (ray.origin, ray.direction);
+//		if (Physics.Raycast (ray, out info)) {
+//			if(info.collider.gameObject.tag.Equals("Player")) {
+//				HandlePlayerHit(info.collider.gameObject);
+//			}
+//		}
+//
+//
+//	}
+
+	private Vector3 prev = Vector3.zero;
+	
+	void FixedUpdate() {
+		if(prev != Vector3.zero){
+			RaycastHit info;
+			if(Physics.Linecast(prev, transform.position, out info)){
+				HandlePlayerHit(info.collider.gameObject);
+			}
+		}   
+		prev = transform.position;
+	}
+
+	void HandlePlayerHit(GameObject obj) {
+		if (obj.tag.Equals("Player")) {
+			if(obj.GetComponent<PlayerStats>().PlayerColor != m_Shooter.PlayerColor) {
+				Debug.Log ("Hit player");
+
+				GameObject explosion = Instantiate(m_Explosion, transform.position, Quaternion.identity) as GameObject;
+				ParticleSystem[] ps = explosion.GetComponentsInChildren<ParticleSystem> ();
+				foreach (ParticleSystem p in ps) {
+					p.startColor = m_Shooter.PlayerColor;
+				}
+				explosion.transform.parent = TempContainer.Instance.transform;
+
+				obj.GetComponent<PaintableSurface>().Paint(m_Shooter, null);
+				return;
+
+				Destroy(gameObject);
+			}
+		}
+	}
+
 	void OnCollisionEnter(Collision collision) {
 		PaintableSurface surface = collision.gameObject.GetComponent<PaintableSurface>();
 
@@ -54,19 +99,20 @@ public class Bullet : MonoBehaviour {
 			return; // Ignore surfaces that aren't paintable
 		}
 
-		GameObject obj = Instantiate(m_Explosion, transform.position, Quaternion.identity) as GameObject;
-		ParticleSystem[] ps = obj.GetComponentsInChildren<ParticleSystem> ();
-		foreach (ParticleSystem p in ps) {
-			p.startColor = m_Shooter.PlayerColor;
-		}
-		obj.transform.parent = TempContainer.Instance.transform;
-
-		if (collision.gameObject.tag.Equals("Player")) {
-			if(collision.gameObject.GetComponent<PlayerStats>().PlayerColor != m_Shooter.PlayerColor) {
-				surface.Paint(m_Shooter, null);
-				return;
-			}
-		}
+//		GameObject obj = Instantiate(m_Explosion, transform.position, Quaternion.identity) as GameObject;
+//		ParticleSystem[] ps = obj.GetComponentsInChildren<ParticleSystem> ();
+//		foreach (ParticleSystem p in ps) {
+//			p.startColor = m_Shooter.PlayerColor;
+//		}
+//		obj.transform.parent = TempContainer.Instance.transform;
+//
+//		if (collision.gameObject.tag.Equals("Player")) {
+//			if(collision.gameObject.GetComponent<PlayerStats>().PlayerColor != m_Shooter.PlayerColor) {
+//				Debug.Log ("Hit player");
+//				surface.Paint(m_Shooter, null);
+//				return;
+//			}
+//		}
 
 		//Splat each contact point raycast will only hit the collider of collision
 		foreach (ContactPoint p in collision.contacts) {
