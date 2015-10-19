@@ -48,7 +48,8 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 	void Start() {
 		string[] joysticks = Input.GetJoystickNames ();
 
-//		CreatePlayer<KeyboardControl> ().transform.position = Vector3.zero;
+		// GameObject player = CreatePlayer<KeyboardControl> ();
+		// m_SpawnPoints[1].GetComponent<PlayerSpawner>().Spawn(player);
 
 		for(int i = 0; i < joysticks.Length; i++) {
 			GameObject player = CreatePlayer<PS4Control>();
@@ -58,19 +59,6 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 		for (int i = m_PlayerCount; i < m_MaxPlayers; i++) {
 			CreatePlayer<KeyboardControl> ();
 		}
-
-
-//		if (joysticks.Length == 0) {
-//			CreatePlayer<KeyboardControl> ();
-//			CreatePlayer<KeyboardControl> ();
-//		} else {
-//			for(int i = 0; i < joysticks.Length; i++) {
-//				GameObject player = CreatePlayer<PS4Control>();
-//				m_Players[i].GetComponent<PS4Control>().m_Player = i;
-//			}
-//		}
-
-
 	}
 
 	void Update() {
@@ -141,6 +129,11 @@ public class LevelManager : MonoBehaviour, ILevelManager {
 	}
 
 	void OnGUI() {
+		if(m_PlayerCount == 1) {
+			//don't draw line for 1 player
+			return;
+		}
+
 		int[] teams = GetTeamInfo ();
 
 		float height = 10;
